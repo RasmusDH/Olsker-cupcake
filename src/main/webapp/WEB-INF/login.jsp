@@ -35,11 +35,11 @@
 
                 <div class="form-group">
                     <label for="email">Indtast din email:</label>
-                    <input type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp">
+                    <input type="text" name="email" class="form-control" id="email" placeholder="Email">
                 </div>
                 <div class="form-group">
                     <label for="password">Indtast dit password:</label>
-                    <input type="password" name="password" class="form-control" id="password">
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Password">
                 </div>
 
                 <div class="text-center">
@@ -47,6 +47,10 @@
                 </div>
                 <div class="text-center mt-3">
                     <a class="btn btn-outline-dark" href="FrontController?target=redirect&destination=registrer" role="button">Registrer</a>
+                </div>
+
+                <div class="text-center mt-3">
+                    <a class="btn btn-outline-dark" href="FrontController?target=redirect&destination=index" role="button">Tilbage til start</a>
                 </div>
             </form>
         </div>

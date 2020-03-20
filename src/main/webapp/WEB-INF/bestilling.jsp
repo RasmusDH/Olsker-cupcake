@@ -74,7 +74,7 @@
             <div class="col-md-2 school-options text-center">
                 <div class="form-group">
                     <label for="quantity">Indtast antal cupcakes:</label>
-                    <input type="text" name="quantity" class="form-control" id="quantity" placeholder="Antal cupcakes">
+                    <input type="number" name="quantity" class="form-control" id="quantity" placeholder="Antal cupcakes">
                 </div>
             </div>
 

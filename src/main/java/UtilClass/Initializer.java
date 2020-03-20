@@ -2,6 +2,7 @@ package UtilClass;
 
 import FunctionLayer.Bottom;
 import FunctionLayer.LogicFacade;
+import FunctionLayer.Order;
 import FunctionLayer.Topping;
 
 import java.util.List;
@@ -10,6 +11,7 @@ public class Initializer {
 
     private static List<Topping> toppingList = null;
     private static List<Bottom> bottomList = null;
+    private static List<Order> orderList = null;
 
     public static List<Topping> getToppingList() {
         if (toppingList == null){
@@ -31,5 +33,16 @@ public class Initializer {
             }
         }
         return bottomList;
+    }
+
+    public static List<Order> getOrderList() {
+        if (orderList == null){
+            try {
+                orderList = LogicFacade.getAllOrders();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return orderList;
     }
 }

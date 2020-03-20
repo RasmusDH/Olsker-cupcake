@@ -6,12 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="CupcakeProject-master ny" />
+        <module name="Olsker-cupcake" />
+        <module name="Projektskabelon" />
         <module name="ProjektSkabelon-master" />
         <module name="prejektSkabelon" />
         <module name="CupcakeProject" />
+        <module name="CupcakeProject-master ny" />
         <module name="Projektskabelon-master" />
-        <module name="Projektskabelon" />
       </profile>
     </annotationProcessing>
   </component>
@@ -19,6 +20,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="CupcakeProject" options="-endorseddirs &quot;C:\Users\miade\OneDrive\1 CBA - Datamatiker\2. semester\HTML filer\Cupcake Projektet\CupcakeProject\target/endorsed&quot;" />
       <module name="CupcakeProject-master ny" options="-endorseddirs &quot;C:\Users\Rasmus\IdeaProjects\CupcakeProject-master ny\target/endorsed&quot;" />
+      <module name="Olsker-cupcake" options="-endorseddirs &quot;C:\Users\miade\OneDrive\1 CBA - Datamatiker\2. semester\HTML filer\Cupcake Projektet\OlskersCupcakes\Olsker-cupcake\target/endorsed&quot;" />
       <module name="ProjektSkabelon-master" options="-endorseddirs &quot;$PROJECT_DIR$/target/endorsed&quot;" />
       <module name="Projektskabelon" options="-endorseddirs &quot;$PROJECT_DIR$/target/endorsed&quot;" />
       <module name="Projektskabelon-master" options="-endorseddirs $PROJECT_DIR$/target/endorsed" />

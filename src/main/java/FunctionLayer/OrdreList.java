@@ -2,7 +2,7 @@ package FunctionLayer;
 
 import java.util.ArrayList;
 
-public class Ordre {
+public class OrdreList {
 
     private int ordreID;
     private static ArrayList<Cupcake> cupcakeOrdre;
@@ -14,13 +14,13 @@ public class Ordre {
     }
 
 
-    public Ordre(int ordreID, ArrayList<Cupcake> cupcakeOrdre, int sum) {
+    public OrdreList(int ordreID, ArrayList<Cupcake> cupcakeOrdre, int sum) {
         this.ordreID = ordreID;
         this.cupcakeOrdre = cupcakeOrdre;
         this.sum = sum;
     }
 
-    public Ordre(ArrayList<Cupcake> cupcakeOrdre, int sum) {
+    public OrdreList(ArrayList<Cupcake> cupcakeOrdre, int sum) {
         this.cupcakeOrdre = cupcakeOrdre;
         this.sum = sum;
     }

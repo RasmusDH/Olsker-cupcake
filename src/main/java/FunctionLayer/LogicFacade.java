@@ -29,6 +29,11 @@ public class LogicFacade {
         return BottomMapper.getAllBottoms();
     }
 
+    public static List<Order> getAllOrders() throws LoginSampleException {
+        return OrdreMapper.listOfOrders();
+    }
+
+
     public static void insertOrdre(int Quantity,
                                    double Sum, int ToppingID, int BottomID) throws LoginSampleException {
         OrdreMapper.insertOrdre(Quantity, Sum, ToppingID, BottomID);

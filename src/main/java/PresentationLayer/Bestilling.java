@@ -26,17 +26,18 @@ public class Bestilling extends Command {
         String bottomName = request.getParameter("bottomName");
 
         // Quantity (antal):
+        /*
         int quantity;
         quantity = Integer.parseInt(request.getParameter("quantity"));
-
+        */
 
         Cupcake cupcake = new Cupcake(toppingName, bottomName);
         cupcake.setCupcakePrice(cupcake.totalPriceCalculator(toppingName, bottomName));
-
+        /*
         double sum = cupcake.getCupcakePrice() * quantity;
 
         session.setAttribute("sum", sum);
-
+        */
         return "bestilling";
 
     }
