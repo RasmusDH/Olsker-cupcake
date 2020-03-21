@@ -18,9 +18,9 @@ public class Cupcake {
         List<Bottom> bottoms = BottomMapper.getAllBottoms();
         List<Topping> toppings = ToppingMapper.getAllToppings();
 
-        double topPrice = toppings.get(toppings.indexOf(topping)).getToppingPrice();
-        double botPrice = bottoms.get(bottoms.indexOf(bottom)).getBottomPrice();
-        cupcakePrice = (topPrice + botPrice);
+        //double topPrice = toppings.get(toppings.indexOf(topping)).getToppingPrice();
+        //double botPrice = bottoms.get(bottoms.indexOf(bottom)).getBottomPrice();
+        //cupcakePrice = (topPrice + botPrice);
         return cupcakePrice;
     }
 
