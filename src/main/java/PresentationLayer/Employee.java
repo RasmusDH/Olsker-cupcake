@@ -1,5 +1,6 @@
 package PresentationLayer;
 
+import DBAccess.OldOrderMapper;
 import DBAccess.OrdreMapper;
 import FunctionLayer.*;
 
@@ -23,6 +24,10 @@ public class Employee extends Command {
         // Ting der skal hentes fra employee:
         String order = request.getParameter("order");
 
+        int orderID = Integer.parseInt(request.getParameter("orderID"));
+        OldOrderMapper.deleteOrder(orderID);
+
+        request.setAttribute("message", "Ordre slettet");
 
         return "Employeepage";
     }

@@ -12,6 +12,7 @@ public class Initializer {
     private static List<Topping> toppingList = null;
     private static List<Bottom> bottomList = null;
     private static List<Order> orderList = null;
+    private static List<Order> oldOrderList = null;
 
     public static List<Topping> getToppingList() {
         if (toppingList == null){
@@ -44,5 +45,15 @@ public class Initializer {
             }
         }
         return orderList;
+    }
+    public static List<Order> getOldOrderList() {
+        if (oldOrderList == null){
+            try {
+                oldOrderList = LogicFacade.getAllOldOrders();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return oldOrderList;
     }
 }

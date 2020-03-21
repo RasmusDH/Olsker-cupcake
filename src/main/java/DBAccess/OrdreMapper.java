@@ -15,7 +15,7 @@ public class OrdreMapper {
 
         try {
             Connection con = Connector.connection();
-            String SQL = "SELECT * FROM cupcake_shop.orders";
+            String SQL = "SELECT * FROM cupcake_shop.orders2";
             PreparedStatement ps = con.prepareStatement( SQL );
             ResultSet rs = ps.executeQuery();
             while ( rs.next() ) {
@@ -23,9 +23,10 @@ public class OrdreMapper {
                     listOfOrders = new ArrayList<>();
                 }
                 int orderID = rs.getInt( "OrderID" );
-                Date date = rs.getDate( "Date" );
+                String email = rs.getString("Email");
                 int customerID = rs.getInt( "CustomerID" );
-                Order order = new Order(orderID, date, customerID);
+                Date date = rs.getDate( "Date" );
+                Order order = new Order(orderID, email, customerID, date);
                 listOfOrders.add(order);
             }
         } catch ( ClassNotFoundException | SQLException ex ) {

@@ -14,6 +14,8 @@
 
 dette er kurven!
 
+${sessionScope.cupcakeList}
+
 <p>${sessionScope.sum}</p>
 <p>${sessionScope.toppingPrice}</p>
 <p>${sessionScope.bottomprice}</p>

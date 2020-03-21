@@ -53,8 +53,7 @@ public class Kurv extends Command {
         System.out.println(sum);
 
         //LogicFacade.insertOrdre(quantity, sum, toppingValue, bottomValue);
-
-        return "kurv"; */
-return null;
+*/
+        return "kurv";
     }
 }

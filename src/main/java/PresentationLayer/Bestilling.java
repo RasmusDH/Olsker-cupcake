@@ -25,14 +25,51 @@ public class Bestilling extends Command {
         String toppingName = request.getParameter("toppingName");
         String bottomName = request.getParameter("bottomName");
 
+        double topPrice;
+
+        if (toppingName == "Chocolate" || toppingName == "Blueberry" || toppingName == "Raspberry"){
+            topPrice = 5;
+        } else if (toppingName == "Crispy" || toppingName == "Strawberry"){
+            topPrice = 6;
+        } else if (toppingName == "Rum/Raisin"){
+            topPrice = 7;
+        } else if (toppingName == "Orange" || toppingName == "Lemon"){
+            topPrice = 8;
+        } else if (toppingName == "Blue cheese"){
+            topPrice = 9;
+        } else {
+            topPrice = 0;
+        }
+
+        double botPrice;
+
+        if (bottomName == "Chocolate" || bottomName == "Vanilla" || bottomName == "Nutmeg"){
+            botPrice = 5;
+        } else if (bottomName == "Pistacio"){
+            botPrice = 6;
+        } else if (toppingName == "Almond"){
+            botPrice = 7;
+        } else {
+            botPrice = 0;
+        }
+
+        Topping topping = new Topping(toppingName, topPrice);
+        Bottom bottom = new Bottom(bottomName, botPrice);
+
+        Cupcake cupcake = new Cupcake(toppingName, bottomName);
+        //cupcake.setCupcakePrice(cupcake.totalPriceCalculator(topping, bottom));
+
+        cupcake.addCupcake(cupcake);
+        ArrayList<Cupcake> cupcakeList = cupcake.getCupcakeOrdre();
+        session.setAttribute("cupcakeList", cupcakeList);
         // Quantity (antal):
         /*
+
         int quantity;
         quantity = Integer.parseInt(request.getParameter("quantity"));
         */
 
-        Cupcake cupcake = new Cupcake(toppingName, bottomName);
-        cupcake.setCupcakePrice(cupcake.totalPriceCalculator(toppingName, bottomName));
+
         /*
         double sum = cupcake.getCupcakePrice() * quantity;
 
