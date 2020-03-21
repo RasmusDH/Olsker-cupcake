@@ -32,8 +32,8 @@
     if (request.getServletContext().getAttribute("orderList") == null) {
         request.getServletContext().setAttribute("orderList", Initializer.getOrderList());
     }
-    if (request.getServletContext().getAttribute("bottomList") == null) {
-        request.getServletContext().setAttribute("bottomList", Initializer.getBottomList());
+    if (request.getServletContext().getAttribute("oldOrderList") == null) {
+        request.getServletContext().setAttribute("oldOrderList", Initializer.getOldOrderList());
     }
 %>
 
@@ -50,19 +50,52 @@
     <br>
     <br>
 
-    <div class="text-center mt-3">
-        <h5>Alle ordre:</h5>
-        <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            Alle ordre
-        </button>
-        <div class="collapse" id="collapseExample">
-            <div class="card card-body">
-                        <c:forEach var="order" items="${applicationScope.orderList}">
-                            ${order.date}
-                            <br>
-                        </c:forEach>
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <h6>Se alle ordre:</h6>
+            <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#AlleOrdre" aria-expanded="false" aria-controls="AlleOrdre">
+                Alle ordre
+            </button>
+            <div class="collapse" id="AlleOrdre">
+                <div class="card card-body">
+                    <c:forEach var="order" items="${applicationScope.orderList}">
+                        Ordre: ${order.orderID}. Dato: ${order.date}. Ordren er lavet af: ${order.email} (${order.customerID})
+                        <br>
+                    </c:forEach>
+                </div>
             </div>
         </div>
+
+        <div class="col-md-4 text-center">
+            <h6>Se gamle ordre:</h6>
+            <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#Gamleordre" aria-expanded="false" aria-controls="Gamleordre">
+                Gamle ordre
+            </button>
+            <div class="collapse" id="Gamleordre">
+                <div class="card card-body">
+                    <c:forEach var="oldOrder" items="${applicationScope.oldOrderList}">
+                        Ordre: ${oldOrder.orderID}. Dato: ${oldOrder.date}. Ordren er lavet af: ${oldOrder.email} (${oldOrder.customerID})
+                        <br>
+                    </c:forEach>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-4 text-center">
+            <form name="employee" action="FrontController" method="POST">
+                <input type="hidden" name="target" value="employee">
+            <h6>Fjern ordre:</h6>
+            <div class="input-group mb-3">
+                <input type="number" class="form-control" placeholder="OrderID" aria-label="OrderID" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="submit">Fjern ordre</button>
+                </div>
+            </div>
+            </form>
+            ${requestScope.message}
+        </div>
+
     </div>
 
 

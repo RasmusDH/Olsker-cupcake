@@ -32,6 +32,9 @@ public class LogicFacade {
     public static List<Order> getAllOrders() throws LoginSampleException {
         return OrdreMapper.listOfOrders();
     }
+    public static List<Order> getAllOldOrders() throws LoginSampleException {
+        return OldOrderMapper.listOfOldOrders();
+    }
 
 
     public static void insertOrdre(int Quantity,

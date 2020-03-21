@@ -36,6 +36,8 @@
     </div>
 </div>
 
+${sessionScope.cupcakeList}
+
 <p>${sessionScope.sum}</p>
 <p>${sessionScope.toppingPrice}</p>
 <p>${sessionScope.bottomprice}</p>

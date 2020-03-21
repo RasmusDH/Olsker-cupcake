@@ -13,15 +13,19 @@ public class Cupcake {
     private double cupcakePrice;
     private int topID;
     private int botID;
+    private static ArrayList<Cupcake> cupcakeOrdre;
 
-    public double totalPriceCalculator(String topping, String bottom) throws LoginSampleException {
+    public double totalPriceCalculator(Topping topping, Bottom bottom) throws LoginSampleException {
         List<Bottom> bottoms = BottomMapper.getAllBottoms();
         List<Topping> toppings = ToppingMapper.getAllToppings();
 
-        //double topPrice = toppings.get(toppings.indexOf(topping)).getToppingPrice();
-        //double botPrice = bottoms.get(bottoms.indexOf(bottom)).getBottomPrice();
-        //cupcakePrice = (topPrice + botPrice);
+
         return cupcakePrice;
+    }
+
+    public void addCupcake(Cupcake cupcake){
+        cupcakeOrdre = new ArrayList<>();
+        cupcakeOrdre.add(cupcake);
     }
 
     public Cupcake(String topping, String bottom) {
@@ -30,6 +34,13 @@ public class Cupcake {
 
     }
 
+    public ArrayList<Cupcake> getCupcakeOrdre() {
+        return cupcakeOrdre;
+    }
+
+    public void setCupcakeOrdre(ArrayList<Cupcake> cupcakeOrdre) {
+        Cupcake.cupcakeOrdre = cupcakeOrdre;
+    }
 
     public String getTopping() {
         return topping;
@@ -70,4 +81,5 @@ public class Cupcake {
     public void setBotID(int botID) {
         this.botID = botID;
     }
+
 }
