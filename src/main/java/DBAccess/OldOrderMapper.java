@@ -9,6 +9,8 @@ import java.util.List;
 
 public class OldOrderMapper {
 
+    public static Order order;
+
     public static List<Order> listOfOldOrders() throws LoginSampleException {
 
         List<Order> listOfOldOrders = null;
@@ -26,7 +28,7 @@ public class OldOrderMapper {
                 String email = rs.getString("Email");
                 int customerID = rs.getInt( "CustomerID" );
                 Date date = rs.getDate( "Date" );
-                Order order = new Order(orderID, email, customerID, date);
+                order = new Order(orderID, email, customerID, date);
                 listOfOldOrders.add(order);
             }
         } catch ( ClassNotFoundException | SQLException ex ) {

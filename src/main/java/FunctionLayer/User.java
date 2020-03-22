@@ -19,6 +19,7 @@ public class User {
     private String password; // Should be hashed and secured
     private String role;
 
+
     public String getName() {
         return name;
     }

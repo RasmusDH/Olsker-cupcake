@@ -37,6 +37,18 @@ public class LogicFacade {
     }
 
 
+    public static ArrayList<Customer> getAllCustomers() throws LoginSampleException, SQLException, ClassNotFoundException {
+        return CustomerMapper.customerList();
+    }
+
+    public static void insert(int customerID, double amount) {
+        CustomerMapper.insert(customerID, amount);
+    }
+
+    public static ArrayList<CustomerOrder> customerOrderList() throws SQLException, ClassNotFoundException{
+        return CustomerOrderMapper.customerOrderList();
+    }
+
     public static void insertOrdre(int Quantity,
                                    double Sum, int ToppingID, int BottomID) throws LoginSampleException {
         OrdreMapper.insertOrdre(Quantity, Sum, ToppingID, BottomID);
