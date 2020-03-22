@@ -14,9 +14,9 @@ public class OrdreMapper {
         List<Order> listOfOrders = null;
 
         try {
-            Connection con = Connector.connection();
+            Connector con = new Connector();
             String SQL = "SELECT * FROM cupcake_shop.orders2";
-            PreparedStatement ps = con.prepareStatement( SQL );
+            PreparedStatement ps = con.getConnector().prepareStatement( SQL );
             ResultSet rs = ps.executeQuery();
             while ( rs.next() ) {
                 if (listOfOrders == null){
@@ -40,10 +40,10 @@ public class OrdreMapper {
     public static void insertOrdre(int Quantity,
                                    double Sum, int ToppingID, int BottomID) throws LoginSampleException {
         try {
-            Connection con = Connector.connection();
+            Connector con = new Connector();
             String SQL = "INSERT INTO orderline(Quantity, Sum, ToppingID, BottomID) " +
                     "VALUES (?,?,?,?)";
-            PreparedStatement ps = con.prepareStatement(SQL);
+            PreparedStatement ps = con.getConnector().prepareStatement(SQL);
 
             ps.setInt(1, Quantity);
             ps.setDouble(2, Sum);

@@ -11,40 +11,40 @@ public class OldOrderMapper {
 
     public static Order order;
 
-    public static List<Order> listOfOldOrders() throws LoginSampleException {
+    public static List<Order> listOfOldOrders() throws LoginSampleException, SQLException, ClassNotFoundException {
 
         List<Order> listOfOldOrders = null;
+        Connector myConnector = new Connector();
 
-        try {
-            Connection con = Connector.connection();
-            String SQL = "SELECT * FROM cupcake_shop.oldorders";
-            PreparedStatement ps = con.prepareStatement( SQL );
-            ResultSet rs = ps.executeQuery();
-            while ( rs.next() ) {
-                if (listOfOldOrders == null){
-                    listOfOldOrders = new ArrayList<>();
-                }
-                int orderID = rs.getInt( "OrderID" );
-                String email = rs.getString("Email");
-                int customerID = rs.getInt( "CustomerID" );
-                Date date = rs.getDate( "Date" );
-                order = new Order(orderID, email, customerID, date);
-                listOfOldOrders.add(order);
+        myConnector.getConnector();
+        String SQL = "SELECT * FROM cupcake_shop.oldorders";
+        PreparedStatement ps = myConnector.getConnector().prepareStatement(SQL);
+        ResultSet rs = ps.executeQuery();
+        while (rs.next()) {
+            if (listOfOldOrders == null) {
+                listOfOldOrders = new ArrayList<>();
             }
-        } catch ( ClassNotFoundException | SQLException ex ) {
-            throw new LoginSampleException(ex.getMessage());
+            int orderID = rs.getInt("OrderID");
+            String email = rs.getString("Email");
+            int customerID = rs.getInt("CustomerID");
+            Date date = rs.getDate("Date");
+            order = new Order(orderID, email, customerID, date);
+            listOfOldOrders.add(order);
         }
         return listOfOldOrders;
     }
 
+
     public static void deleteOrder(int orderID) {
-        Connection con = null;
+        Connector myConnector = new Connector();
+
+
 
         try {
-            con = Connector.connection();
+            myConnector.getConnector();
             String sql = "delete from oldorders where OrderID ='"+orderID+"'";
             System.out.println("SQL:" + sql);
-            PreparedStatement ps = con.prepareStatement(sql);
+            PreparedStatement ps = myConnector.getConnector().prepareStatement(sql);
             ps.executeUpdate();
 
             //ps.close();

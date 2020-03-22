@@ -19,9 +19,9 @@ public class ToppingMapper {
         List<Topping> toppingList = null;
 
         try {
-            Connection con = Connector.connection();
+            Connector con = new Connector();
             String SQL = "SELECT * FROM toppings";
-            PreparedStatement ps = con.prepareStatement( SQL );
+            PreparedStatement ps = con.getConnector().prepareStatement( SQL );
             ResultSet rs = ps.executeQuery();
             while ( rs.next() ) {
                 if (toppingList == null){

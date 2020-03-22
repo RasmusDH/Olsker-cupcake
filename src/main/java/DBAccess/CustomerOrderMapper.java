@@ -9,14 +9,14 @@ public class CustomerOrderMapper {
 
     public static ArrayList<CustomerOrder> customerOrderList() throws SQLException, ClassNotFoundException{
         ArrayList<CustomerOrder> returnList = new ArrayList<>();
-        Connection con2 = Connector.connection();
+        Connector con = new Connector();
 
         // TODO: hent fra databasen
         Statement statement = null;
         ResultSet resultSet = null;
 
         String query = "SELECT * FROM cupcake_shop.customerorder;";
-        statement = con2.createStatement();
+        statement = con.getConnector().createStatement();
         // ResultSet sender dataen over i programmet
         resultSet = statement.executeQuery(query);
 

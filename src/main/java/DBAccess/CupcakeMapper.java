@@ -13,14 +13,15 @@ public class CupcakeMapper {
 
     public ArrayList<Topping> toppingList() throws SQLException, ClassNotFoundException{
         ArrayList<Topping> returnList = new ArrayList<>();
-        Connection myConnector = Connector.connection();
+        Connector myConnector = new Connector();
+        myConnector.getConnector();
 
         // TODO: hent fra databasen
         Statement statement = null;
         ResultSet resultSet = null;
 
         String query = "SELECT Name, Price FROM cupcake_shop.toppings";
-        statement = myConnector.createStatement();
+        statement = myConnector.getConnector().createStatement();
         // ResultSet sender dataen over i programmet
         resultSet = statement.executeQuery(query);
 
@@ -41,14 +42,15 @@ public class CupcakeMapper {
 
     public ArrayList<Bottom> bottomList() throws SQLException, ClassNotFoundException{
         ArrayList<Bottom> returnList = new ArrayList<>();
-        Connection myConnector = Connector.connection();
+        Connector myConnector = new Connector();
+        myConnector.getConnector();
 
         // TODO: hent fra databasen
         Statement statement = null;
         ResultSet resultSet = null;
 
         String query = "SELECT Name, Price FROM cupcake_shop.bottoms";
-        statement = myConnector.createStatement();
+        statement = myConnector.getConnector().createStatement();
         // ResultSet sender dataen over i programmet
         resultSet = statement.executeQuery(query);
 

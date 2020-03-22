@@ -15,11 +15,13 @@ public class BottomMapper {
     public static List<Bottom> getAllBottoms() throws LoginSampleException {
 
         List<Bottom> bottomList = null;
+        Connector myConnector = new Connector();
+
 
         try {
-            Connection con = Connector.connection();
+            myConnector.getConnector();
             String SQL = "SELECT * FROM bottoms";
-            PreparedStatement ps = con.prepareStatement( SQL );
+            PreparedStatement ps = myConnector.getConnector().prepareStatement( SQL );
             ResultSet rs = ps.executeQuery();
             while ( rs.next() ) {
                 if (bottomList == null){

@@ -48,8 +48,15 @@
 
     <h1 class="text-center mb-4">Velkommen ${sessionScope.name}</h1>
 
+    - Man kan kun opdatere beløbet
+    <br>
+    - Kundelisten bliver ikke opdateret
+    <br>
+    - Man kan godt slette flere ordre men listen bliver ikke opdateret
+    <br>
+    <br>
+
     Indsæt beløb på kundekonto:
-    - Mangler: MAN KAN KUN SÆTTE ET BELØB PÅ OG IKKE LIGGE DET TIL DET EKSISTERENDE BELØB. OG DET KAN KUN GØRES EN GANG.
     <form name="balance" action="FrontController" method="POST" >
         <input type="hidden" name="target" value="balance">
 
@@ -104,7 +111,6 @@
 
 
         <div class="col-md-4 text-center">
-            MAN KAN KUN SLETTE 1 ORDRE AD GANGEN
             <h6>Slet ordre:</h6>
             <form name="employee" action="FrontController" method="POST" >
                 <input type="hidden" name="target" value="employee">

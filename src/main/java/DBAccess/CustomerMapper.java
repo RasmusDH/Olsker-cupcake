@@ -11,15 +11,15 @@ import java.util.ArrayList;
 public class CustomerMapper {
 
     public static ArrayList<Customer> customerList() throws SQLException, ClassNotFoundException{
-        ArrayList<Customer> returnList = new ArrayList<Customer>();
-        Connection con = Connector.connection();
+        ArrayList<Customer> returnList = new ArrayList<>();
+        Connector con = new Connector();
 
         // TODO: hent fra databasen
         Statement statement = null;
         ResultSet resultSet = null;
 
         String query = "SELECT * FROM customers";
-        statement = con.createStatement();
+        statement = con.getConnector().createStatement();
         // ResultSet sender dataen over i programmet
         resultSet = statement.executeQuery(query);
 
@@ -48,8 +48,9 @@ public class CustomerMapper {
 
         String SQL = "UPDATE cupcake_shop.customers SET Balance = ? WHERE CustomerID = ?";
 
-        try (Connection conn = Connector.connection();
-             PreparedStatement pstmt = conn.prepareStatement(SQL)) {
+        Connector conn = new Connector();
+        try (
+             PreparedStatement pstmt = conn.getConnector().prepareStatement(SQL)) {
 
             pstmt.setDouble(1, amount);
             pstmt.setInt(2, customerID);
@@ -64,9 +65,9 @@ public class CustomerMapper {
 
     public static void insertBalance(int id, double balance) throws LoginSampleException, SQLException, ClassNotFoundException {
 
-        Connection con = Connector.connection();
+        Connector con = new Connector();
         String SQL = "UPDATE cupcake_shop.customers SET Balance ='" + balance + "' where CustomerID='" + id + "'";
-        PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement ps = con.getConnector().prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
 
         ps.setDouble(1, balance);
         ps.setInt(2, id);
