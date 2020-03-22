@@ -1,9 +1,6 @@
 package UtilClass;
 
-import FunctionLayer.Bottom;
-import FunctionLayer.LogicFacade;
-import FunctionLayer.Order;
-import FunctionLayer.Topping;
+import FunctionLayer.*;
 
 import java.util.List;
 
@@ -13,6 +10,8 @@ public class Initializer {
     private static List<Bottom> bottomList = null;
     private static List<Order> orderList = null;
     private static List<Order> oldOrderList = null;
+    private static List<Customer> customerList = null;
+    private static List<CustomerOrder> customerOrderList = null;
 
     public static List<Topping> getToppingList() {
         if (toppingList == null){
@@ -56,4 +55,26 @@ public class Initializer {
         }
         return oldOrderList;
     }
+
+    public static List<Customer> getCustomerList() {
+        if (customerList == null){
+            try {
+                customerList = LogicFacade.getAllCustomers();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return customerList;
+    }
+    public static List<CustomerOrder> getCustomerOrderList() {
+        if (customerOrderList == null){
+            try {
+                customerOrderList = LogicFacade.customerOrderList();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return customerOrderList;
+    }
+
 }

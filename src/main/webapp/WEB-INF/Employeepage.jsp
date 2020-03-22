@@ -35,6 +35,12 @@
     if (request.getServletContext().getAttribute("oldOrderList") == null) {
         request.getServletContext().setAttribute("oldOrderList", Initializer.getOldOrderList());
     }
+    if (request.getServletContext().getAttribute("customerList") == null) {
+        request.getServletContext().setAttribute("customerList", Initializer.getCustomerList());
+    }
+    if (request.getServletContext().getAttribute("customerOrderList") == null) {
+        request.getServletContext().setAttribute("customerOrderList", Initializer.getCustomerOrderList());
+    }
 %>
 
 <div class="container">
@@ -43,8 +49,23 @@
     <h1 class="text-center mb-4">Velkommen ${sessionScope.name}</h1>
 
     Indsæt beløb på kundekonto:
-    - Mangler
+    - Mangler: MAN KAN KUN SÆTTE ET BELØB PÅ OG IKKE LIGGE DET TIL DET EKSISTERENDE BELØB. OG DET KAN KUN GØRES EN GANG.
+    <form name="balance" action="FrontController" method="POST" >
+        <input type="hidden" name="target" value="balance">
 
+        <div class="form-group">
+            <label for="ID">Indtast kundeID:</label>
+            <input type="text" name="customerID" class="form-control" id="ID" placeholder="KundeID">
+        </div>
+        <div class="form-group">
+            <label for="amount">Indtast beløbet der skal indsættes:</label>
+            <input type="number" name="amount" class="form-control" id="amount" placeholder="Beløb">
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-dark mt-3">Login</button>
+        </div>
+    </form>
     <br>
     <br>
     <br>
@@ -83,20 +104,57 @@
 
 
         <div class="col-md-4 text-center">
-            <form name="employee" action="FrontController" method="POST">
+            MAN KAN KUN SLETTE 1 ORDRE AD GANGEN
+            <h6>Slet ordre:</h6>
+            <form name="employee" action="FrontController" method="POST" >
                 <input type="hidden" name="target" value="employee">
-            <h6>Fjern ordre:</h6>
-            <div class="input-group mb-3">
-                <input type="number" class="form-control" placeholder="OrderID" aria-label="OrderID" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-secondary" type="submit">Fjern ordre</button>
+                <div class="input-group mb-3">
+                    <input type="number" class="form-control" name="orderID" placeholder="OrderID" aria-label="OrderID" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit">Delete</button>
+                    </div>
                 </div>
-            </div>
             </form>
             ${requestScope.message}
         </div>
 
     </div>
+
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <h6>Se alle kunder:</h6>
+            <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#AlleKunder" aria-expanded="false" aria-controls="AlleKunder">
+                Alle kunder
+            </button>
+            <div class="collapse" id="AlleKunder">
+                <div class="card card-body">
+                    <c:forEach var="customer" items="${applicationScope.customerList}">
+                        Kunde-${customer.id}: ${customer.name}, ${customer.email}. Saldo: ${customer.balance}
+                        <br>
+                    </c:forEach>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 text-center">
+            <h6>Se udvidet ordre liste:</h6>
+            <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#Ordre" aria-expanded="false" aria-controls="Ordre">
+                Ordre
+            </button>
+            <div class="collapse" id="Ordre">
+                <div class="card card-body">
+                    <c:forEach var="CO" items="${applicationScope.customerOrderList}">
+                        Kunde: ${CO.customerID}, ${CO.email}.
+                            Order: ${CO.orderID}, ${CO.date}.
+                            Orderline: ${CO.orderlineID}, antal: ${CO.quantity}, sum: ${CO.sum}, topping: ${CO.toppingName} ${CO.toppingPrice}, bund: ${CO.bottomName} ${CO.bottomPrice}.
+                        <br><br>
+                    </c:forEach>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
 
 
     <div class="text-center mt-3">
