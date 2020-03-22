@@ -1,3 +1,4 @@
+<%@ page import="UtilClass.Initializer" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -17,6 +18,12 @@
     <title>Kurv</title>
 </head>
 <body>
+<%
+    if (request.getServletContext().getAttribute("orderList") == null) {
+        request.getServletContext().setAttribute("orderList", Initializer.getOrderList());
+    }
+
+%>
 <img src="Images/LoginBackground.png" class="img-fluid mb-4" alt="Logo" width="100%" height=auto>
 <hr>
 
@@ -25,22 +32,20 @@
         <h4>Cart
             <span class="price" style="color:black">
           <i class="fa fa-shopping-cart"></i>
-          <b>4</b>
+
         </span>
         </h4>
-        <c:forEach var="bottom" items="${applicationScope.bottomList}">
-            <option value="${bottom.id}">${bottom.bottom}</option>
+        <div class="card card-body">
+        <c:forEach var="order" items="${sessionScope.cupcakeList}">
+            ${order}
+            <br>
         </c:forEach>
+        </div>
         <hr>
-        <p>Total <span class="price" style="color:black"><b>"finalPrice"</b></span></p>
+        <p>Total: <span class="price" style="color:black"><b>${sessionScope.finalPrice}</b></span></p>
     </div>
 </div>
-
-${sessionScope.cupcakeList}
-
-<p>${sessionScope.sum}</p>
-<p>${sessionScope.toppingPrice}</p>
-<p>${sessionScope.bottomprice}</p>
+<button onclick="goBack()">Go Back</button>
 
 
 </body>

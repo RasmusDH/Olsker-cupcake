@@ -43,6 +43,6 @@ public class Topping {
 
     @Override
     public String toString() {
-        return topping + ": " + toppingPrice + "\n";
+        return topping + " (" +toppingPrice + " kr)" + "\n";
     }
 }

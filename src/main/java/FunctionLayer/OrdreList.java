@@ -8,6 +8,8 @@ public class OrdreList {
     private static ArrayList<Cupcake> cupcakeOrdre;
     private static double sum;
 
+
+
     public static void addCupcake(Cupcake cupcake){
 
         cupcakeOrdre.add(cupcake);
@@ -17,7 +19,7 @@ public class OrdreList {
         double finalPrice = 0;
         for (Cupcake cupcake:cupcakeOrdre) {
 
-            finalPrice = finalPrice + cupcake.totalPriceCalculator("topping", "bottom");
+            finalPrice = finalPrice + cupcake.totalPriceCalculator();
 
         }
 
