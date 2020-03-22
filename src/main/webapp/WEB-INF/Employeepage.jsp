@@ -41,6 +41,9 @@
     if (request.getServletContext().getAttribute("customerOrderList") == null) {
         request.getServletContext().setAttribute("customerOrderList", Initializer.getCustomerOrderList());
     }
+    if (request.getServletContext().getAttribute("indiOrderList") == null) {
+        request.getServletContext().setAttribute("indiOrderList", Initializer.getListOfIndiOrders());
+    }
 %>
 
 <div class="container">
@@ -88,7 +91,7 @@
                 <div class="card card-body">
                     <c:forEach var="order" items="${applicationScope.orderList}">
                         Ordre: ${order.orderID}. Dato: ${order.date}. Ordren er lavet af: ${order.email} (${order.customerID})
-                        <br>
+                        <br><br>
                     </c:forEach>
                 </div>
             </div>
@@ -103,7 +106,7 @@
                 <div class="card card-body">
                     <c:forEach var="oldOrder" items="${applicationScope.oldOrderList}">
                         Ordre: ${oldOrder.orderID}. Dato: ${oldOrder.date}. Ordren er lavet af: ${oldOrder.email} (${oldOrder.customerID})
-                        <br>
+                        <br><br>
                     </c:forEach>
                 </div>
             </div>
@@ -136,7 +139,7 @@
                 <div class="card card-body">
                     <c:forEach var="customer" items="${applicationScope.customerList}">
                         Kunde-${customer.id}: ${customer.name}, ${customer.email}. Saldo: ${customer.balance}
-                        <br>
+                        <br><br>
                     </c:forEach>
                 </div>
             </div>
@@ -150,13 +153,26 @@
             <div class="collapse" id="Ordre">
                 <div class="card card-body">
                     <c:forEach var="CO" items="${applicationScope.customerOrderList}">
-                        Kunde: ${CO.customerID}, ${CO.email}.
-                            Order: ${CO.orderID}, ${CO.date}.
-                            Orderline: ${CO.orderlineID}, antal: ${CO.quantity}, sum: ${CO.sum}, topping: ${CO.toppingName} ${CO.toppingPrice}, bund: ${CO.bottomName} ${CO.bottomPrice}.
+                        Kunde-${CO.customerID}: ${CO.name} - OrderID-${CO.orderID} - ${CO.date}
                         <br><br>
                     </c:forEach>
                 </div>
             </div>
+        </div>
+
+        <div class="col-md-4 text-center">
+            <h6>Detaljer om individuelle ordre:</h6>
+            <div class="form-group">
+                <input type="number" name="orderID" class="form-control" id="orderID" placeholder="OrderID">
+            </div>
+            
+
+            
+            <c:forEach var="CO" items="${applicationScope.customerOrderList}">
+                Kunde-${CO.customerID}: ${CO.name} - OrderID-${CO.orderID} - ${CO.date}
+                <br><br>
+            </c:forEach>
+
         </div>
 
     </div>

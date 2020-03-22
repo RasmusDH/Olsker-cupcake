@@ -40,33 +40,4 @@ public class CupcakeMapper {
         return returnList;
     }
 
-    public ArrayList<Bottom> bottomList() throws SQLException, ClassNotFoundException{
-        ArrayList<Bottom> returnList = new ArrayList<>();
-        Connector myConnector = new Connector();
-        myConnector.getConnector();
-
-        // TODO: hent fra databasen
-        Statement statement = null;
-        ResultSet resultSet = null;
-
-        String query = "SELECT Name, Price FROM cupcake_shop.bottoms";
-        statement = myConnector.getConnector().createStatement();
-        // ResultSet sender dataen over i programmet
-        resultSet = statement.executeQuery(query);
-
-        //executeUpdate
-        while (resultSet.next()){
-            String name = resultSet.getString("Name");
-            double price = resultSet.getInt("Price");
-            Bottom tmpBottom = new Bottom(name, price);
-            returnList.add(tmpBottom);
-        }
-
-        // Lukker efter mig:
-        resultSet.close();
-        statement.close();
-
-        return returnList;
-    }
-
 }

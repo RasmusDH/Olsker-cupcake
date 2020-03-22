@@ -28,32 +28,25 @@
 </head>
 <body>
 
-<%
-    if (request.getServletContext().getAttribute("toppingList") == null) {
-        request.getServletContext().setAttribute("toppingList", Initializer.getToppingList());
-    }
-    if (request.getServletContext().getAttribute("bottomList") == null) {
-        request.getServletContext().setAttribute("bottomList", Initializer.getBottomList());
-    }
-%>
 
 <div class="container">
     <img src="Images/LoginBackground.png" class="img-fluid mb-4" alt="Logo" width="100%" height=auto>
 
     <p>${sessionScope.toppingPrice}</p>
 
+
     <!-- Dropdowns -->
     <form action="FrontController" method="post">
-        <input type="hidden" name="target" value="kurv"/>
+        <input type="hidden" name="target" value="bestilling">
 
         <div class="row">
 
             <div class="col-md-5 school-options-dropdown text-center">
                 <div class="form-group">
-                    <label for="bottomDropdown">Vælg bund:</label>
-                    <select class="form-control" name="bottomName" id="bottomDropdown">
-                        <c:forEach var="bottom" items="${applicationScope.bottomList}">
-                            <option value="${bottom.id}">${bottom.bottom}</option>
+                    <label >Vælg bund:</label>
+                    <select class="form-control" name="bund">
+                        <c:forEach var="bottom" items="${bottoms}">
+                            <option name="bund">${bottom.name}, ${bottom.bottomPrice}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -61,10 +54,10 @@
 
             <div class="col-md-5 school-options-dropdown text-center">
                 <div class="form-group">
-                    <label for="toppingDropdown">Vælg topping:</label>
-                    <select class="form-control" name="toppingName" id="toppingDropdown">
-                        <c:forEach var="topping" items="${applicationScope.toppingList}">
-                            <option value="${topping.id}">${topping.topping}</option>
+                    <label>Vælg topping:</label>
+                    <select class="form-control" name="top">
+                        <c:forEach var="topping" items="${toppings}">
+                            <option name="top">${topping.name}, ${topping.toppingPrice}</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -73,8 +66,8 @@
 
             <div class="col-md-2 school-options text-center">
                 <div class="form-group">
-                    <label for="quantity">Indtast antal cupcakes:</label>
-                    <input type="number" name="quantity" class="form-control" id="quantity" placeholder="Antal cupcakes">
+                    <p>Indtast antal</p>
+                    <input name="quantity" type="text">
                 </div>
             </div>
 
@@ -83,8 +76,14 @@
         <div class="text-center">
             <button type="submit" class="btn btn-primary mt-4">Tilføj til kurv</button>
         </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary mt-4">gå til kurv</button>
+        </div>
+        <a href="FrontController?target=redirect&destination=kurv">THE KURV</a>
 
+        ${sessionScope.test}
     </form>
+
 </div>
 </div>
 <!-- /.container -->

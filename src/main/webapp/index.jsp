@@ -1,4 +1,4 @@
-<%--
+<%@ page import="UtilClass.Initializer" %><%--
   Created by IntelliJ IDEA.
   User: miade
   Date: 12-03-2020
@@ -36,6 +36,20 @@
 
 </head>
 <body style="background: rgb(184,36,62) linear-gradient(0deg, rgba(184,36,62,1) 0%, rgba(224,202,174,1) 44%)">
+
+
+<%!
+    @Override
+    public void jspInit(){
+        Initializer.initBottoms();
+        Initializer.initToppings();
+    }
+%>
+
+<%
+    request.setAttribute("toppings", Initializer.getToppingList());
+    request.setAttribute("bottoms", Initializer.getBottomList());
+%>
 
 
 <!-- Start Picture -->
@@ -127,10 +141,7 @@
                         <img class="card-img-top" src="./Images/bestil.jpg" alt="">
                         <div class="card-body">
                             <h4 class="card-title">
-                                <form name="bestilling" action="FrontController" method="POST">
-                                    <input type="hidden" name="target" value="bestilling">
-                                    <input type="submit" value="Bestil Cupcakes">
-                                </form>
+                                <a href="FrontController?target=redirect&destination=bestilling">Bestil cupcakes</a>
                             </h4>
                             <p class="card-text">Her kan De bestille Danmarks bedste cupcakes! De kan frit mikse bunde
                             med toppings efter Deres smag. God fornøjelse!</p>

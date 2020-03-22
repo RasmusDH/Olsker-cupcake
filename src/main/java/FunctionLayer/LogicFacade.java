@@ -23,10 +23,10 @@ public class LogicFacade {
     }
 
     public static List<Topping> getAllToppings() throws LoginSampleException {
-        return ToppingMapper.getAllToppings();
+        return ToppingMapper.getTopping();
     }
     public static List<Bottom> getAllBottoms() throws LoginSampleException {
-        return BottomMapper.getAllBottoms();
+        return BottomMapper.getBottom();
     }
 
     public static List<Order> getAllOrders() throws LoginSampleException {
@@ -49,6 +49,13 @@ public class LogicFacade {
         return CustomerOrderMapper.customerOrderList();
     }
 
+
+    public static List<IndividualOrder> listOfIndiOrders() throws LoginSampleException {
+        return IndividualOrderMapper.listOfIndiOrders();
+    }
+
+
+
     public static void insertOrdre(int Quantity,
                                    double Sum, int ToppingID, int BottomID) throws LoginSampleException {
         OrdreMapper.insertOrdre(Quantity, Sum, ToppingID, BottomID);
@@ -56,15 +63,7 @@ public class LogicFacade {
 
 
 
-        public static ArrayList<Topping> topping( ) throws LoginSampleException, SQLException, ClassNotFoundException {
-        CupcakeMapper c = new CupcakeMapper();
-        return c.toppingList();
-    }
 
-    public static ArrayList<Bottom> bottoms( ) throws LoginSampleException, SQLException, ClassNotFoundException {
-        CupcakeMapper c = new CupcakeMapper();
-        return c.bottomList();
-    }
 
 
 }

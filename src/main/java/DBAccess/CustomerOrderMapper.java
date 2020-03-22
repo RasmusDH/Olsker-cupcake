@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class CustomerOrderMapper {
 
+
     public static ArrayList<CustomerOrder> customerOrderList() throws SQLException, ClassNotFoundException{
         ArrayList<CustomerOrder> returnList = new ArrayList<>();
         Connector con = new Connector();
@@ -15,7 +16,7 @@ public class CustomerOrderMapper {
         Statement statement = null;
         ResultSet resultSet = null;
 
-        String query = "SELECT * FROM cupcake_shop.customerorder;";
+        String query = "SELECT * FROM cupcake_shop.customersorders;";
         statement = con.getConnector().createStatement();
         // ResultSet sender dataen over i programmet
         resultSet = statement.executeQuery(query);
@@ -23,18 +24,11 @@ public class CustomerOrderMapper {
         //executeUpdate
         while (resultSet.next()){
             int customerID = resultSet.getInt("CustomerID");
-            String email = resultSet.getString("Email");
+            String name = resultSet.getString("Name");
             int orderID = resultSet.getInt("OrderID");
             Date date = resultSet.getDate("Date");
-            int orderlineID = resultSet.getInt("OrderlineID");
-            int quantity = resultSet.getInt("Quantity");
-            double sum = resultSet.getDouble("Sum");
-            String toppingName = resultSet.getString("Topping");
-            double toppingPrice = resultSet.getDouble("ToppingPrice");
-            String bottomName = resultSet.getString("Bottom");
-            double bottomPrice = resultSet.getDouble("BottomPrice");
-            CustomerOrder tmp = new CustomerOrder(customerID, email, orderID, date, orderlineID, quantity, sum, toppingName,
-                    toppingPrice, bottomName, bottomPrice);
+
+            CustomerOrder tmp = new CustomerOrder(customerID, name, orderID, date);
             returnList.add(tmp);
         }
 
@@ -45,4 +39,6 @@ public class CustomerOrderMapper {
 
         return returnList;
     }
+
+
 }

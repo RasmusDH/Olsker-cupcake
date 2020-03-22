@@ -36,16 +36,20 @@
         </span>
         </h4>
         <div class="card card-body">
-        <c:forEach var="order" items="${sessionScope.cupcakeList}">
-            ${order}
-            <br>
-        </c:forEach>
+            <c:forEach var="cupcake" items="${sessionScope.cart}">
+                ${cupcake}
+                <br>
+            </c:forEach>
         </div>
         <hr>
         <p>Total: <span class="price" style="color:black"><b>${sessionScope.finalPrice}</b></span></p>
     </div>
+
+    <div class="text-center mt-3">
+        <a class="btn btn-outline-dark" href="FrontController?target=redirect&destination=bestilling" role="button">Bestil flere</a>
+    </div>
 </div>
-<button onclick="goBack()">Go Back</button>
+
 
 
 </body>

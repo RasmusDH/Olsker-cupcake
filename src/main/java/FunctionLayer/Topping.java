@@ -3,17 +3,17 @@ package FunctionLayer;
 public class Topping {
 
     private int id; // just used to demo retrieval of autogen keys in UserMapper
-    private String topping;
+    private String name;
     private double toppingPrice;
 
-    public Topping(String topping, double toppingPrice) {
-        this.topping = topping;
+    public Topping(String name, double toppingPrice) {
+        this.name = name;
         this.toppingPrice = toppingPrice;
     }
 
-    public Topping(int id, String topping, double toppingPrice) {
+    public Topping(int id, String name, double toppingPrice) {
         this.id = id;
-        this.topping = topping;
+        this.name = name;
         this.toppingPrice = toppingPrice;
     }
 
@@ -25,12 +25,12 @@ public class Topping {
         this.id = id;
     }
 
-    public String getTopping() {
-        return topping;
+    public String getName() {
+        return name;
     }
 
-    public void setTopping(String topping) {
-        this.topping = topping;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getToppingPrice() {
@@ -43,6 +43,6 @@ public class Topping {
 
     @Override
     public String toString() {
-        return topping + " (" +toppingPrice + " kr)" + "\n";
+        return name + " (" +toppingPrice + " kr)" + "\n";
     }
 }

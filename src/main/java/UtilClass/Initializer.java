@@ -1,38 +1,32 @@
 package UtilClass;
 
+import DBAccess.BottomMapper;
+import DBAccess.ToppingMapper;
 import FunctionLayer.*;
 
 import java.util.List;
 
 public class Initializer {
 
-    private static List<Topping> toppingList = null;
-    private static List<Bottom> bottomList = null;
+    private static List<Topping> toppingList;
+    private static List<Bottom> bottomList;
     private static List<Order> orderList = null;
     private static List<Order> oldOrderList = null;
     private static List<Customer> customerList = null;
     private static List<CustomerOrder> customerOrderList = null;
+    private static List<IndividualOrder> individualOrderList = null;
 
-    public static List<Topping> getToppingList() {
+    public static void initToppings() {
         if (toppingList == null){
-            try {
-                toppingList = LogicFacade.getAllToppings();
-            } catch (Exception e){
-                e.printStackTrace();
-            }
+            toppingList = ToppingMapper.getTopping();
         }
-        return toppingList;
     }
 
-    public static List<Bottom> getBottomList() {
+
+    public static void initBottoms() {
         if (bottomList == null){
-            try {
-                bottomList = LogicFacade.getAllBottoms();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            bottomList = BottomMapper.getBottom();
         }
-        return bottomList;
     }
 
     public static List<Order> getOrderList() {
@@ -77,4 +71,23 @@ public class Initializer {
         return customerOrderList;
     }
 
+    public static List<IndividualOrder> getListOfIndiOrders() {
+        if (individualOrderList == null){
+            try {
+                individualOrderList = LogicFacade.listOfIndiOrders();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        return individualOrderList;
+    }
+
+
+    public static List<Bottom> getBottomList(){
+        return bottomList;
+    }
+
+    public static List<Topping> getToppingList() {
+        return toppingList;
+    }
 }

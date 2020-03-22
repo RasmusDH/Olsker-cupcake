@@ -3,24 +3,23 @@ package FunctionLayer;
 import DBAccess.BottomMapper;
 import DBAccess.ToppingMapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Cupcake {
 
     private Topping topping;
     private Bottom bottom;
+    private int antal;
+
     private double cupcakePrice;
     private int cupcakeID;
     private int topID;
     private int botID;
-    private ArrayList<Cupcake> cupcakeOrdre = new ArrayList<Cupcake>();
-
 
 
     public double totalPriceCalculator() throws LoginSampleException {
-        List<Bottom> bottoms = BottomMapper.getAllBottoms();
-        List<Topping> toppings = ToppingMapper.getAllToppings();
+        List<Bottom> bottoms = BottomMapper.getBottom();
+        List<Topping> toppings = ToppingMapper.getTopping();
 
 
                 //double topPrice = toppings.get(toppings.indexOf(topping)).getToppingPrice();
@@ -34,23 +33,14 @@ public class Cupcake {
         return cupcakePrice;
     }
 
-    public void addCupcake(Cupcake cupcake){
-        cupcakeOrdre.add(cupcake);
-    }
-
-    public Cupcake(Topping topping, Bottom bottom) {
+    public Cupcake(Topping topping, Bottom bottom, int antal) {
         this.topping = topping;
         this.bottom = bottom;
+        this.antal = antal;
 
     }
 
-    public ArrayList<Cupcake> getCupcakeOrdre() {
-        return cupcakeOrdre;
-    }
 
-    public void setCupcakeOrdre(ArrayList<Cupcake> cupcakeOrdre) {
-        this.cupcakeOrdre = cupcakeOrdre;
-    }
 
     public Topping getTopping() {
         return topping;
@@ -102,6 +92,10 @@ public class Cupcake {
 
     @Override
     public String toString() {
-        return bottom + " bund med " + topping + " topping";
+        return "Cupcake{" +
+                "topping=" + topping +
+                ", bottom=" + bottom +
+                ", antal=" + antal +
+                '}';
     }
 }

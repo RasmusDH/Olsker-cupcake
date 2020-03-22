@@ -4,17 +4,13 @@ public class Bottom {
 
 
     private int id; // just used to demo retrieval of autogen keys in UserMapper
-    private String bottom;
+    private String name;
     private double bottomPrice;
 
-    public Bottom(String bottom, double bottomPrice) {
-        this.bottom = bottom;
-        this.bottomPrice = bottomPrice;
-    }
 
-    public Bottom(int id, String bottom, double bottomPrice) {
+    public Bottom(int id, String name, double bottomPrice) {
         this.id = id;
-        this.bottom = bottom;
+        this.name = name;
         this.bottomPrice = bottomPrice;
     }
 
@@ -26,12 +22,12 @@ public class Bottom {
         this.id = id;
     }
 
-    public String getBottom() {
-        return bottom;
+    public String getName() {
+        return name;
     }
 
-    public void setBottom(String bottom) {
-        this.bottom = bottom;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public double getBottomPrice() {
@@ -44,6 +40,6 @@ public class Bottom {
 
     @Override
     public String toString() {
-        return bottom + " (" + bottomPrice + " kr)" + "\n";
+        return name + " (" + bottomPrice + " kr)" + "\n";
     }
 }

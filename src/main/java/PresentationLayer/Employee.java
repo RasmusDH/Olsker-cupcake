@@ -13,12 +13,15 @@ public class Employee extends Command {
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, SQLException, ClassNotFoundException {
 
         int orderID = Integer.parseInt(request.getParameter("orderID"));
+        request.setAttribute("orderID", orderID);
         OldOrderMapper.deleteOrder(orderID);
         request.setAttribute("message", "Ordre slettet");
 
         Order order = OldOrderMapper.order;
         Initializer.getOldOrderList().remove(order);
         request.setAttribute("order", order);
+
+
 
         return "Employeepage";
     }

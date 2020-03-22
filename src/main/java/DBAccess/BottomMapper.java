@@ -12,11 +12,10 @@ import java.util.List;
 
 public class BottomMapper {
 
-    public static List<Bottom> getAllBottoms() throws LoginSampleException {
+    public static ArrayList<Bottom> getBottom() {
 
-        List<Bottom> bottomList = null;
+        ArrayList<Bottom> bottomList = new ArrayList<>();
         Connector myConnector = new Connector();
-
 
         try {
             myConnector.getConnector();
@@ -24,17 +23,14 @@ public class BottomMapper {
             PreparedStatement ps = myConnector.getConnector().prepareStatement( SQL );
             ResultSet rs = ps.executeQuery();
             while ( rs.next() ) {
-                if (bottomList == null){
-                    bottomList = new ArrayList<>();
-                }
+
                 int bottomID = rs.getInt( "BottomID" );
                 String name = rs.getString( "Name" );
                 double price = rs.getDouble("Price");
-                Bottom bottom = new Bottom(bottomID, name, price);
-                bottomList.add(bottom);
+                bottomList.add(new Bottom(bottomID, name, price));
             }
         } catch ( ClassNotFoundException | SQLException ex ) {
-            throw new LoginSampleException(ex.getMessage());
+            System.out.println(ex.getMessage());
         }
         return bottomList;
     }
