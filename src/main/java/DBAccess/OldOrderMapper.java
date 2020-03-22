@@ -47,8 +47,7 @@ public class OldOrderMapper {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.executeUpdate();
 
-            ps.close();
-            con.close();
+            //ps.close();
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
