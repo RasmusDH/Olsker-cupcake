@@ -8,9 +8,22 @@ public class OrdreList {
     private static ArrayList<Cupcake> cupcakeOrdre;
     private static double sum;
 
+
+
     public static void addCupcake(Cupcake cupcake){
-        cupcakeOrdre = new ArrayList<>();
+
         cupcakeOrdre.add(cupcake);
+    }
+
+    public double totalPris(Cupcake coopcake) throws LoginSampleException {
+        double finalPrice = 0;
+        for (Cupcake cupcake:cupcakeOrdre) {
+
+            finalPrice = finalPrice + cupcake.totalPriceCalculator();
+
+        }
+
+        return finalPrice;
     }
 
 

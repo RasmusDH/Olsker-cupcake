@@ -44,6 +44,6 @@ public class Bottom {
 
     @Override
     public String toString() {
-        return bottom + ": " + bottomPrice + "\n";
+        return bottom + " (" + bottomPrice + " kr)" + "\n";
     }
 }

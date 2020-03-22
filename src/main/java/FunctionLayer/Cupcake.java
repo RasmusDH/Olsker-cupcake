@@ -8,30 +8,37 @@ import java.util.List;
 
 public class Cupcake {
 
-    private String topping;
-    private String bottom;
+    private Topping topping;
+    private Bottom bottom;
     private double cupcakePrice;
+    private int cupcakeID;
     private int topID;
     private int botID;
-    private static ArrayList<Cupcake> cupcakeOrdre;
+    private ArrayList<Cupcake> cupcakeOrdre = new ArrayList<Cupcake>();
 
-    public double totalPriceCalculator(Topping topping, Bottom bottom) throws LoginSampleException {
+
+
+    public double totalPriceCalculator() throws LoginSampleException {
         List<Bottom> bottoms = BottomMapper.getAllBottoms();
         List<Topping> toppings = ToppingMapper.getAllToppings();
 
+
+                //double topPrice = toppings.get(toppings.indexOf(topping)).getToppingPrice();
+                //double botPrice = bottoms.get(bottoms.indexOf(bottom)).getBottomPrice();
+                //cupcakePrice = (topPrice + botPrice);
         double topPrice = toppings.get(toppings.indexOf(topping)).getToppingPrice();
         double botPrice = bottoms.get(bottoms.indexOf(bottom)).getBottomPrice();
 
         cupcakePrice = (topPrice + botPrice);
+
         return cupcakePrice;
     }
 
     public void addCupcake(Cupcake cupcake){
-        cupcakeOrdre = new ArrayList<>();
         cupcakeOrdre.add(cupcake);
     }
 
-    public Cupcake(String topping, String bottom) {
+    public Cupcake(Topping topping, Bottom bottom) {
         this.topping = topping;
         this.bottom = bottom;
 
@@ -42,22 +49,30 @@ public class Cupcake {
     }
 
     public void setCupcakeOrdre(ArrayList<Cupcake> cupcakeOrdre) {
-        Cupcake.cupcakeOrdre = cupcakeOrdre;
+        this.cupcakeOrdre = cupcakeOrdre;
     }
 
-    public String getTopping() {
+    public Topping getTopping() {
         return topping;
     }
 
-    public void setTopping(String topping) {
+    public void setTopping(Topping topping) {
         this.topping = topping;
     }
 
-    public String getBottom() {
+    public int getCupcakeID() {
+        return cupcakeID;
+    }
+
+    public void setCupcakeID(int cupcakeID) {
+        this.cupcakeID = cupcakeID;
+    }
+
+    public Bottom getBottom() {
         return bottom;
     }
 
-    public void setBottom(String bottom) {
+    public void setBottom(Bottom bottom) {
         this.bottom = bottom;
     }
 
@@ -85,4 +100,8 @@ public class Cupcake {
         this.botID = botID;
     }
 
+    @Override
+    public String toString() {
+        return bottom + " bund med " + topping + " topping";
+    }
 }
