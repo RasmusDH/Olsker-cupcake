@@ -68,6 +68,7 @@ CREATE TABLE `customerorder` (
 
 LOCK TABLES `customerorder` WRITE;
 /*!40000 ALTER TABLE `customerorder` DISABLE KEYS */;
+INSERT INTO `customerorder` VALUES (1,'andreas.noer@hotmail.dk',1,'2020-03-22',1,200,4,'Jordgubber',3,'lort',4);
 /*!40000 ALTER TABLE `customerorder` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -87,7 +88,7 @@ CREATE TABLE `customers` (
   `Balance` int(20) NOT NULL,
   PRIMARY KEY (`CustomerID`),
   UNIQUE KEY `email_UNIQUE` (`Email`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -96,8 +97,33 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'Andreas Noer','andreas.noer@hotmail.dk','ally','Customer',500),(2,'Bob Nielsen','bob.nielsen@gmail.com','bobbyman','Customer',300),(3,'Robin Robinson','robin@somewhere.com','batman','Customer',500),(4,'Jens Jensen','jens.jensen@gmail.com','missekat','Customer',500),(5,'Lars Larsen','lars.jysk@gmail.co','jyskmand','Customer',500),(6,'Karl Karlsen','karl.karlsen@gmail.com','hemmeligkode','Customer',500),(7,'Britta Nielsen','Britta.snyd@hotmail.com','snydsystemet','Customer',500),(8,'Kim Larsen','køb.bananer@hotmail.com','herhosmig','Customer',500),(9,'Ole Olesen','ole.olesen@live.dk','kode123','Customer',500),(10,'Mickey Mus','mickey.mus@gmail.com','andersand','Customer',500);
+INSERT INTO `customers` VALUES (1,'Andreas Noer','andreas.noer@hotmail.dk','ally','customer',5000),(2,'Bob Nielsen','bob.nielsen@gmail.com','bobbyman','customer',500),(3,'Robin Robinson','robin@somewhere.com','batman','customer',500),(4,'Jens Jensen','jens.jensen@gmail.com','missekat','customer',500),(5,'Lars Larsen','lars.jysk@gmail.co','jyskmand','customer',500),(6,'Karl Karlsen','karl.karlsen@gmail.com','hemmeligkode','customer',500),(7,'Britta Nielsen','Britta.snyd@hotmail.com','snydsystemet','customer',500),(8,'Kim Larsen','køb.bananer@hotmail.com','herhosmig','customer',500),(9,'Ole Olesen','ole.olesen@live.dk','kode123','customer',500),(10,'Mickey Mus','mickey.mus@gmail.com','andersand','customer',500),(11,'Emilie','emilieErSej@gmail.com','Bella','customer',500),(13,'test','test@gmail.com','test','Customer',500),(14,'Fisen','Fisen@spurgt.dk','prutprut','customer',500),(15,'Kokage','Mums@outlook.com','Muuh','customer',500);
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `customersorders`
+--
+
+DROP TABLE IF EXISTS `customersorders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `customersorders` (
+  `CustomerID` int(11) NOT NULL DEFAULT '0',
+  `Name` varchar(45) CHARACTER SET latin1 NOT NULL,
+  `OrderID` int(11) NOT NULL DEFAULT '0',
+  `Date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `customersorders`
+--
+
+LOCK TABLES `customersorders` WRITE;
+/*!40000 ALTER TABLE `customersorders` DISABLE KEYS */;
+INSERT INTO `customersorders` VALUES (1,'Andreas Noer',1,'2020-03-21'),(9,'Ole Olesen',2,'2020-03-20'),(9,'Ole Olesen',3,'2020-03-21'),(5,'Lars Larsen',4,'2020-03-19');
+/*!40000 ALTER TABLE `customersorders` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -148,6 +174,36 @@ LOCK TABLES `employees` WRITE;
 /*!40000 ALTER TABLE `employees` DISABLE KEYS */;
 INSERT INTO `employees` VALUES (1,'Mia de Fries','miadefries@gmail.com','bertil3','Employee');
 /*!40000 ALTER TABLE `employees` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `individualorders`
+--
+
+DROP TABLE IF EXISTS `individualorders`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `individualorders` (
+  `OrderID` int(11) NOT NULL DEFAULT '0',
+  `Date` date NOT NULL,
+  `Email` varchar(90) CHARACTER SET latin1 NOT NULL,
+  `Topping` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `ToppingPrice` int(11) NOT NULL,
+  `Bottom` varchar(100) CHARACTER SET latin1 NOT NULL,
+  `BottomPrice` int(11) NOT NULL,
+  `Quantity` int(255) NOT NULL,
+  `Sum` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `individualorders`
+--
+
+LOCK TABLES `individualorders` WRITE;
+/*!40000 ALTER TABLE `individualorders` DISABLE KEYS */;
+INSERT INTO `individualorders` VALUES (2,'2020-03-20','ole.olesen@live.dk','Chocolate',5,'Chocolate',5,2,20),(3,'2020-03-21','ole.olesen@live.dk','Crispy',6,'Nutmeg',5,10,110),(1,'2020-03-19','lars.jysk@gmail.co','Orange',8,'Almond',7,1,15),(4,'2020-03-21','andreas.noer@hotmail.dk','Orange',8,'Chocolate',5,2,26);
+/*!40000 ALTER TABLE `individualorders` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -217,11 +273,12 @@ DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
   `OrderID` int(11) NOT NULL AUTO_INCREMENT,
   `Date` date NOT NULL,
+  `Name` varchar(45) NOT NULL,
   `CustomerID` int(11) NOT NULL,
   PRIMARY KEY (`OrderID`),
   KEY `CustomerID` (`CustomerID`),
   CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`CustomerID`) REFERENCES `customers` (`CustomerID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -230,7 +287,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,'2020-03-21',1),(2,'2020-03-20',9),(3,'2020-03-21',9),(4,'2020-03-19',5);
+INSERT INTO `orders` VALUES (1,'2020-03-19','Lars Larsen',5),(2,'2020-03-20','Ole Olesen',9),(3,'2020-03-21','Ole Olesen',9),(4,'2020-03-21','Andreas Noer',1);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,7 +312,7 @@ CREATE TABLE `orders2` (
 
 LOCK TABLES `orders2` WRITE;
 /*!40000 ALTER TABLE `orders2` DISABLE KEYS */;
-INSERT INTO `orders2` VALUES (1,'andreas.noer@hotmail.dk',1,'2020-03-21'),(2,'ole.olesen@live.dk',9,'2020-03-20');
+INSERT INTO `orders2` VALUES (1,'ole.olesen@live.dk',9,'2020-03-21'),(2,'lars.jysk@gmail.co',5,'2020-03-19');
 /*!40000 ALTER TABLE `orders2` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -299,7 +356,7 @@ CREATE TABLE `users` (
   `Role` varchar(20) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `email_UNIQUE` (`Email`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -308,7 +365,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Mia de Fries','miadefries@gmail.com','bertil3','Employee'),(2,'Andreas Noer','andreas.noer@hotmail.dk','ally','Customer'),(3,'Robin Robinson','robin@somewhere.com','batman','Customer'),(4,'Jens Jensen','jens.jensen@gmail.com','missekat','Customer'),(5,'Lars Larsen','lars.jysk@gmail.co','jyskmand','Customer'),(6,'Karl Karlsen','karl.karlsen@gmail.com','hemmeligkode','Customer'),(7,'Britta Nielsen','Britta.snyd@hotmail.com','snydsystemet','Customer'),(8,'Kim Larsen','køb.bananer@hotmail.com','herhosmig','Customer'),(9,'Ole Olesen','ole.olesen@live.dk','kode123','Customer'),(10,'Mickey Mus','mickey.mus@gmail.com','andersand','Customer'),(11,'Bob Nielsen','bob.nielsen@gmail.com','bobbyman','Customer');
+INSERT INTO `users` VALUES (1,'Mia de Fries','miadefries@gmail.com','bertil3','employee'),(2,'Andreas Noer','andreas.noer@hotmail.dk','ally','customer'),(3,'Robin Robinson','robin@somewhere.com','batman','customer'),(4,'Jens Jensen','jens.jensen@gmail.com','missekat','customer'),(5,'Lars Larsen','lars.jysk@gmail.co','jyskmand','customer'),(6,'Karl Karlsen','karl.karlsen@gmail.com','hemmeligkode','customer'),(7,'Britta Nielsen','Britta.snyd@hotmail.com','snydsystemet','customer'),(8,'Kim Larsen','køb.bananer@hotmail.com','herhosmig','customer'),(9,'Ole Olesen','ole.olesen@live.dk','kode123','customer'),(10,'Mickey Mus','mickey.mus@gmail.com','andersand','customer'),(11,'Bob Nielsen','bob.nielsen@gmail.com','bobbyman','customer'),(12,'Emilie','emilieErSej@gmail.com','Bella','customer'),(13,'test','test@gmail.com','test','customer'),(14,'Fisen','Fisen@spurgt.dk','prutprut','customer'),(15,'Kokage','Mums@outlook.com','Muuh','customer');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -339,4 +396,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-22 13:48:08
+-- Dump completed on 2020-03-23 16:27:05
