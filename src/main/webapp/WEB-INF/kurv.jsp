@@ -30,6 +30,8 @@
 
 <br>
 <hr>
+<form action="FrontController" method="post">
+    <input type="hidden" name="target" value="kurv">
 
 <div class="col-25" align="center">
     <div class="container">
@@ -54,13 +56,18 @@
            class="btn btn-primary mt-4 mb-3" role="button" aria-pressed="true">Bestil flere</a>
     </div>
 <br>
-    <div class="text-center mt-3">
-        <a href="#"
-           class="btn btn-primary mt-5" role="button" aria-pressed="true">Betal</a>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary mt-4">Betal</button>
     </div>
+<br>
+    <div class="text-center mt-3">
+        <a href="FrontController?target=redirect&destination=index"
+           class="btn btn-primary mt-5" role="button" aria-pressed="true">Gå til hovedmenu</a>
+    </div>
+
 
 </div>
 
-
+</form>
 </body>
 </html>
