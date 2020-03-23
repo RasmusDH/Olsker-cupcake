@@ -73,7 +73,7 @@
                 <a class="nav-link" href="FrontController?target=redirect&destination=login">Login</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Kurv</a>
+                <a class="nav-link" href="FrontController?target=redirect&destination=kurv"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Kurv</a>
             </li>
         </ul>
     </div>
