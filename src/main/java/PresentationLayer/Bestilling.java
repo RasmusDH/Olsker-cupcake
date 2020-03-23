@@ -33,6 +33,14 @@ public class Bestilling extends Command {
         request.setAttribute("toppings", Initializer.getToppingList());
         request.setAttribute("bottoms", Initializer.getBottomList());
         session.setAttribute("cart", kurv);
+
+        double finalPrice = 0;
+        for (Cupcake cupcake:kurv){
+             finalPrice += cupcake.cupcakePriceCalculator();
+        }
+
+        session.setAttribute("finalPrice", finalPrice);
+
 /*
         int toppingID = Integer.parseInt(request.getParameter("toppingName"));
         int bottomID = Integer.parseInt(request.getParameter("bottomName"));

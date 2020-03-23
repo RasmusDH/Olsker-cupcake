@@ -15,16 +15,6 @@ public class OrdreList {
         cupcakeOrdre.add(cupcake);
     }
 
-    public double totalPris(Cupcake coopcake) throws LoginSampleException {
-        double finalPrice = 0;
-        for (Cupcake cupcake:cupcakeOrdre) {
-
-            finalPrice = finalPrice + cupcake.totalPriceCalculator();
-
-        }
-
-        return finalPrice;
-    }
 
 
     public OrdreList(int ordreID, ArrayList<Cupcake> cupcakeOrdre, int sum) {

@@ -12,23 +12,15 @@ public class Cupcake {
     private int antal;
 
     private double cupcakePrice;
+
     private int cupcakeID;
     private int topID;
     private int botID;
 
 
-    public double totalPriceCalculator() throws LoginSampleException {
-        List<Bottom> bottoms = BottomMapper.getBottom();
-        List<Topping> toppings = ToppingMapper.getTopping();
+    public double cupcakePriceCalculator() {
 
-
-                //double topPrice = toppings.get(toppings.indexOf(topping)).getToppingPrice();
-                //double botPrice = bottoms.get(bottoms.indexOf(bottom)).getBottomPrice();
-                //cupcakePrice = (topPrice + botPrice);
-        double topPrice = toppings.get(toppings.indexOf(topping)).getToppingPrice();
-        double botPrice = bottoms.get(bottoms.indexOf(bottom)).getBottomPrice();
-
-        cupcakePrice = (topPrice + botPrice);
+        cupcakePrice = (topping.getToppingPrice() + bottom.getBottomPrice())*antal;
 
         return cupcakePrice;
     }
@@ -92,10 +84,6 @@ public class Cupcake {
 
     @Override
     public String toString() {
-        return "Cupcake{" +
-                "topping=" + topping +
-                ", bottom=" + bottom +
-                ", antal=" + antal +
-                '}';
+        return bottom + " bund med " + topping + " topping. " + antal + " stk.";
     }
 }

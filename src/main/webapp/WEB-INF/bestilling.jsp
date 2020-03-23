@@ -77,11 +77,10 @@
             <button type="submit" class="btn btn-primary mt-4">Tilføj til kurv</button>
         </div>
         <div class="text-center">
-            <button type="submit" class="btn btn-primary mt-4">gå til kurv</button>
+            <a href="FrontController?target=redirect&destination=kurv"
+               class="btn btn-primary mt-4" role="button" aria-pressed="true">Gå til kurv</a>
         </div>
-        <a href="FrontController?target=redirect&destination=kurv">THE KURV</a>
 
-        ${sessionScope.test}
     </form>
 
 </div>
