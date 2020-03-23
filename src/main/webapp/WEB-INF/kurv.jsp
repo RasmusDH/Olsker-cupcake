@@ -61,7 +61,7 @@
     </div>
 <br>
     <div class="text-center mt-3">
-        <a href="FrontController?target=redirect&destination=index"
+        <a href="FrontController?target=redirect&destination=customerpage"
            class="btn btn-primary mt-5" role="button" aria-pressed="true">Gå til hovedmenu</a>
     </div>
 

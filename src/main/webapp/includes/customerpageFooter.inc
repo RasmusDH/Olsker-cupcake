@@ -58,10 +58,10 @@
 
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100">
-                        <a href="FrontController?target=redirect&destination=bestiling"><img class="card-img-top" src="./Images/bestil.jpg" alt=""></a>
+                        <a href="FrontController?target=redirect&destination=bestilling"><img class="card-img-top" src="./Images/bestil.jpg" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="FrontController?target=redirect&destination=bestiling" style="text-decoration: none">Bestil Cupcakes</a>
+                                <a href="FrontController?target=redirect&destination=bestilling" style="text-decoration: none">Bestil Cupcakes</a>
                             </h4>
                             <p class="card-text">Her kan De bestille Danmarks bedste cupcakes! De kan frit mikse bunde
                             med toppings efter Deres smag. God fornøjelse!</p>
