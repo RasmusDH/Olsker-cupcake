@@ -21,7 +21,7 @@
                 <a class="nav-link" href="#"><i class="fa fa-fw fa-home"></i>Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="FrontController?target=redirect&destination=">Hello ${sessionScope.name}</a>
+                <a class="nav-link" href="FrontController?target=redirect&destination=">Hello ${sessionScope.email}</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#"><i class="fa fa-shopping-basket" aria-hidden="true"></i> Kurv</a>

@@ -37,6 +37,29 @@ public class OrdreMapper {
 
 
 
+
+
+    public static void deleteOrder(int orderID) {
+        Connector myConnector = new Connector();
+
+        try {
+            myConnector.getConnector();
+            String sql = "delete from cupcake_shop.orders2 where OrderID =?";
+            System.out.println("SQL:" + sql);
+            PreparedStatement ps = myConnector.getConnector().prepareStatement(sql);
+            ps.setInt(1, orderID);
+            ps.executeUpdate();
+
+            //ps.close();
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public static void insertOrdre(int Quantity,
                                    double Sum, int ToppingID, int BottomID) throws LoginSampleException {
         try {

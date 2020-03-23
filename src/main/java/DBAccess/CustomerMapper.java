@@ -44,16 +44,16 @@ public class CustomerMapper {
         return returnList;
     }
 
-    public static void insert(int customerID, double amount) {
+    public static void insert(String email, double amount) {
 
-        String SQL = "UPDATE cupcake_shop.customers SET Balance = ? WHERE CustomerID = ?";
+        String SQL = "UPDATE cupcake_shop.customers SET Balance = ? WHERE Email = ?";
 
         Connector conn = new Connector();
         try (
              PreparedStatement pstmt = conn.getConnector().prepareStatement(SQL)) {
 
             pstmt.setDouble(1, amount);
-            pstmt.setInt(2, customerID);
+            pstmt.setString(2, email);
 
             int rowAffected = pstmt.executeUpdate();
             System.out.println(String.format("Row affected %d", rowAffected));

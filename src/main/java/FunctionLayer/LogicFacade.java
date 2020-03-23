@@ -16,10 +16,12 @@ public class LogicFacade {
         return UserMapper.login( email, password );
     } 
 
-    public static User createUser( String name, String email, String password ) throws LoginSampleException {
+    public static Customer createCustomer( String name, String email, String password ) throws LoginSampleException {
+        Customer customer = new Customer(name, email, password, "customer", 500);
+        UserMapper.createCustomer(customer);
         User user = new User(name, email, password, "customer");
-        UserMapper.createUser( user );
-        return user;
+        UserMapper.createUser(user);
+        return customer;
     }
 
     public static List<Topping> getAllToppings() throws LoginSampleException {
@@ -29,20 +31,43 @@ public class LogicFacade {
         return BottomMapper.getBottom();
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
     public static List<Order> getAllOrders() throws LoginSampleException {
         return OrdreMapper.listOfOrders();
     }
-    public static List<Order> getAllOldOrders() throws LoginSampleException, SQLException, ClassNotFoundException {
-        return OldOrderMapper.listOfOldOrders();
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public static ArrayList<Customer> getAllCustomers() throws LoginSampleException, SQLException, ClassNotFoundException {
         return CustomerMapper.customerList();
     }
 
-    public static void insert(int customerID, double amount) {
-        CustomerMapper.insert(customerID, amount);
+    public static void insert(String email, double amount) {
+        CustomerMapper.insert(email, amount);
     }
 
     public static ArrayList<Order> customerOrderList() throws SQLException, ClassNotFoundException{

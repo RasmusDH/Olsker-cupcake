@@ -15,13 +15,12 @@ public class Balance extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, SQLException, ClassNotFoundException {
 
-
-        int id = Integer.parseInt(request.getParameter("customerID"));
+        String email = request.getParameter("email");
         double amount = Double.parseDouble(request.getParameter("amount"));
 
         double insert = (amount);
 
-        LogicFacade.insert(id, insert);
+        LogicFacade.insert(email, insert);
         //LogicFacade.insertBalance(id, balance);
 
         return "Employeepage";

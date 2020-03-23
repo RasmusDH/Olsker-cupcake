@@ -10,8 +10,6 @@ public class Initializer {
 
     private static List<Topping> toppingList;
     private static List<Bottom> bottomList;
-    private static List<Order> orderList = null;
-    private static List<Order> oldOrderList = null;
     private static List<Customer> customerList = null;
     private static List<Order> customerOrderList = null;
     private static List<IndividualOrder> individualOrderList = null;
@@ -29,6 +27,21 @@ public class Initializer {
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private static List<Order> orderList = null;
+
     public static List<Order> getOrderList() {
         if (orderList == null){
             try {
@@ -39,16 +52,25 @@ public class Initializer {
         }
         return orderList;
     }
-    public static List<Order> getOldOrderList() {
-        if (oldOrderList == null){
-            try {
-                oldOrderList = LogicFacade.getAllOldOrders();
-            } catch (Exception e){
-                e.printStackTrace();
-            }
-        }
-        return oldOrderList;
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static List<Customer> getCustomerList() {
         if (customerList == null){

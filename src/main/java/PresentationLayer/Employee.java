@@ -1,12 +1,14 @@
 package PresentationLayer;
 
 import DBAccess.OldOrderMapper;
+import DBAccess.OrdreMapper;
 import FunctionLayer.*;
 import UtilClass.Initializer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Employee extends Command {
     @Override
@@ -14,12 +16,15 @@ public class Employee extends Command {
 
         int orderID = Integer.parseInt(request.getParameter("orderID"));
         request.setAttribute("orderID", orderID);
-        OldOrderMapper.deleteOrder(orderID);
+
+        OrdreMapper.deleteOrder(orderID);
+
+        Initializer.getOrderList().remove(new Order(orderID));
+
+        //Initializer.getOrderList().remove(order);
+
         request.setAttribute("message", "Ordre slettet");
 
-        Order order = OldOrderMapper.order;
-        Initializer.getOldOrderList().remove(order);
-        request.setAttribute("order", order);
 
 
 

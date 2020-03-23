@@ -32,9 +32,6 @@
     if (request.getServletContext().getAttribute("orderList") == null) {
         request.getServletContext().setAttribute("orderList", Initializer.getOrderList());
     }
-    if (request.getServletContext().getAttribute("oldOrderList") == null) {
-        request.getServletContext().setAttribute("oldOrderList", Initializer.getOldOrderList());
-    }
     if (request.getServletContext().getAttribute("customerList") == null) {
         request.getServletContext().setAttribute("customerList", Initializer.getCustomerList());
     }
@@ -64,8 +61,8 @@
         <input type="hidden" name="target" value="balance">
 
         <div class="form-group">
-            <label for="ID">Indtast kundeID:</label>
-            <input type="text" name="customerID" class="form-control" id="ID" placeholder="KundeID">
+            <label for="email">Indtast email:</label>
+            <input type="text" name="email" class="form-control" id="email" placeholder="email">
         </div>
         <div class="form-group">
             <label for="amount">Indtast beløbet der skal indsættes:</label>
@@ -73,7 +70,7 @@
         </div>
 
         <div class="text-center">
-            <button type="submit" class="btn btn-dark mt-3">Login</button>
+            <button type="submit" class="btn btn-dark mt-3">Indsæt beløb</button>
         </div>
     </form>
     <br>
@@ -82,7 +79,7 @@
     <br>
 
     <div class="row">
-        <div class="col-md-4 text-center">
+        <div class="col-md-6 text-center">
             <h6>Se alle ordre:</h6>
             <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#AlleOrdre" aria-expanded="false" aria-controls="AlleOrdre">
                 Alle ordre
@@ -97,23 +94,8 @@
             </div>
         </div>
 
-        <div class="col-md-4 text-center">
-            <h6>Se gamle ordre:</h6>
-            <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#Gamleordre" aria-expanded="false" aria-controls="Gamleordre">
-                Gamle ordre
-            </button>
-            <div class="collapse" id="Gamleordre">
-                <div class="card card-body">
-                    <c:forEach var="oldOrder" items="${applicationScope.oldOrderList}">
-                        Ordre: ${oldOrder.orderID}. Dato: ${oldOrder.date}. Ordren er lavet af: ${oldOrder.email} (${oldOrder.customerID})
-                        <br><br>
-                    </c:forEach>
-                </div>
-            </div>
-        </div>
 
-
-        <div class="col-md-4 text-center">
+        <div class="col-md-6 text-center">
             <h6>Slet ordre:</h6>
             <form name="employee" action="FrontController" method="POST" >
                 <input type="hidden" name="target" value="employee">
@@ -126,11 +108,12 @@
             </form>
             ${requestScope.message}
         </div>
-
     </div>
 
+    <br>
+
     <div class="row">
-        <div class="col-md-4 text-center">
+        <div class="col-md-12 text-center">
             <h6>Se alle kunder:</h6>
             <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#AlleKunder" aria-expanded="false" aria-controls="AlleKunder">
                 Alle kunder
@@ -144,9 +127,13 @@
                 </div>
             </div>
         </div>
+    </div>
 
+    <br>
+
+    <div class="row">
         <div class="col-md-4 text-center">
-            <h6>Se udvidet ordre liste:</h6>
+            <h6>Se alle kunder og deres ordre:</h6>
             <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#Ordre" aria-expanded="false" aria-controls="Ordre">
                 Ordre
             </button>
@@ -170,7 +157,7 @@
 
             
             <c:forEach var="CO" items="${applicationScope.indiOrderList}">
-                
+
                 <br><br>
             </c:forEach>
 

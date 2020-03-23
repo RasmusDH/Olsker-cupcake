@@ -11,7 +11,11 @@ public class Order {
     private String name;
 
 
-    public Order(int orderID,  Date date, String name, int customerID) {
+    public Order(int orderID) {
+        this.orderID = orderID;
+    }
+
+    public Order(int orderID, Date date, String name, int customerID) {
         this.orderID = orderID;
         this.date = date;
         this.name = name;

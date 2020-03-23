@@ -1,6 +1,7 @@
 package DBAccess;
 
 
+import FunctionLayer.Customer;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
 
@@ -13,14 +14,35 @@ import java.sql.*;
  */
 public class UserMapper {
 
+    public static void createCustomer(Customer customer) throws LoginSampleException {
+        try {
+            Connector con = new Connector();
+            String SQL = "INSERT INTO cupcake_shop.customers (name, email, password, role, balance) VALUES (?, ?, ?, ?, ?)";
+            PreparedStatement ps = con.getConnector().prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, customer.getName());
+            ps.setString(2, customer.getEmail());
+            ps.setString(3, customer.getPassword());
+            ps.setString(4, customer.getRole());
+            ps.setDouble(5, customer.getBalance());
+            ps.executeUpdate();
+            ResultSet ids = ps.getGeneratedKeys();
+            ids.next();
+            int id = ids.getInt(1);
+            customer.setId(id);
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new LoginSampleException(ex.getMessage());
+        }
+    }
+
     public static void createUser(User user) throws LoginSampleException {
         try {
             Connector con = new Connector();
-            String SQL = "INSERT INTO Users (email, password, role) VALUES (?, ?, ?)";
+            String SQL = "INSERT INTO cupcake_shop.users (name, email, password, role) VALUES (?, ?, ?, ?)";
             PreparedStatement ps = con.getConnector().prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, user.getEmail());
-            ps.setString(2, user.getPassword());
-            ps.setString(3, user.getRole());
+            ps.setString(1, user.getName());
+            ps.setString(2, user.getEmail());
+            ps.setString(3, user.getPassword());
+            ps.setString(4, user.getRole());
             ps.executeUpdate();
             ResultSet ids = ps.getGeneratedKeys();
             ids.next();
@@ -30,6 +52,7 @@ public class UserMapper {
             throw new LoginSampleException(ex.getMessage());
         }
     }
+
 
     public static User login(String email, String password) throws LoginSampleException {
         try {

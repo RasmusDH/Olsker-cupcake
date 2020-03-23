@@ -32,7 +32,7 @@
 
             <form name="registrer" action="FrontController" method="post">
 
-                <input type="hidden" name="taget" value="registrer"/>
+                <input type="hidden" name="target" value="registrer"/>
 
                 <div class="form-group">
                     <label for="navn">Indtast dit navn:</label>
@@ -41,10 +41,6 @@
                 <div class="form-group">
                     <label for="email">Indtast din email:</label>
                     <input type="text" name="email" class="form-control" id="email" aria-describedby="emailHelp">
-                </div>
-                <div class="form-group">
-                    <label for="mobil">Indtast dit telefon-nummer (uden landekode):</label>
-                    <input type="text" name="mobil" class="form-control" id="mobil" aria-describedby="mobilHelp">
                 </div>
                 <div class="form-group">
                     <label for="password1">Indtast dit password:</label>

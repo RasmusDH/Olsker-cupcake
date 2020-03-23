@@ -35,26 +35,6 @@ public class OldOrderMapper {
     }
 
 
-    public static void deleteOrder(int orderID) {
-        Connector myConnector = new Connector();
 
-
-
-        try {
-            myConnector.getConnector();
-            String sql = "delete from oldorders where OrderID ='"+orderID+"'";
-            System.out.println("SQL:" + sql);
-            PreparedStatement ps = myConnector.getConnector().prepareStatement(sql);
-            ps.executeUpdate();
-
-            //ps.close();
-
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-    }
 
 }
