@@ -8,8 +8,15 @@ public class Order {
     private Date date;
     private int customerID;
     private String email;
+    private String name;
 
 
+    public Order(int orderID,  Date date, String name, int customerID) {
+        this.orderID = orderID;
+        this.date = date;
+        this.name = name;
+        this.customerID = customerID;
+    }
 
     public Order(Date date, int customerID) {
         this.date = date;
@@ -21,6 +28,14 @@ public class Order {
         this.email = email;
         this.customerID = customerID;
         this.date = date;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public int getOrderID() {

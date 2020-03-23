@@ -13,7 +13,7 @@ public class Initializer {
     private static List<Order> orderList = null;
     private static List<Order> oldOrderList = null;
     private static List<Customer> customerList = null;
-    private static List<CustomerOrder> customerOrderList = null;
+    private static List<Order> customerOrderList = null;
     private static List<IndividualOrder> individualOrderList = null;
 
     public static void initToppings() {
@@ -60,7 +60,7 @@ public class Initializer {
         }
         return customerList;
     }
-    public static List<CustomerOrder> getCustomerOrderList() {
+    public static List<Order> getCustomerOrderList() {
         if (customerOrderList == null){
             try {
                 customerOrderList = LogicFacade.customerOrderList();

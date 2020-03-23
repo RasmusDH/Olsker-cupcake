@@ -153,7 +153,8 @@
             <div class="collapse" id="Ordre">
                 <div class="card card-body">
                     <c:forEach var="CO" items="${applicationScope.customerOrderList}">
-                        Kunde-${CO.customerID}: ${CO.name} - OrderID-${CO.orderID} - ${CO.date}
+                        OrderID-${CO.orderID} ${CO.date}.
+                        <br>Lavet af ${CO.name} (ID-${CO.customerID})
                         <br><br>
                     </c:forEach>
                 </div>
@@ -168,8 +169,8 @@
             
 
             
-            <c:forEach var="CO" items="${applicationScope.customerOrderList}">
-                Kunde-${CO.customerID}: ${CO.name} - OrderID-${CO.orderID} - ${CO.date}
+            <c:forEach var="CO" items="${applicationScope.indiOrderList}">
+                
                 <br><br>
             </c:forEach>
 
