@@ -26,6 +26,11 @@ public class Kurv extends Command {
         balance = balance - finalPrice;
         System.out.println(balance);
         session.setAttribute("balance", balance);
+        Bestilling.kurv.clear();
+        session.removeAttribute("finalPrice");
+        finalPrice = 0;
+        session.setAttribute("finalPrice", finalPrice);
+
         return "kurv";
     }
 
