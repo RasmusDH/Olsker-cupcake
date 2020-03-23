@@ -19,10 +19,15 @@ public class LogicFacade {
     public static Customer createCustomer( String name, String email, String password ) throws LoginSampleException {
         Customer customer = new Customer(name, email, password, "customer", 500);
         UserMapper.createCustomer(customer);
-        User user = new User(name, email, password, "customer");
-        UserMapper.createUser(user);
         return customer;
     }
+
+    public static User createUser( String name, String email, String password ) throws LoginSampleException {
+        User user = new User(name, email, password, "customer");
+        UserMapper.createUser(user);
+        return user;
+    }
+
 
     public static List<Topping> getAllToppings() throws LoginSampleException {
         return ToppingMapper.getTopping();

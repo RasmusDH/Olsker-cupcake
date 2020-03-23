@@ -18,7 +18,7 @@ public class CustomerMapper {
         Statement statement = null;
         ResultSet resultSet = null;
 
-        String query = "SELECT * FROM customers";
+        String query = "SELECT * FROM cupcake_shop.customers";
         statement = con.getConnector().createStatement();
         // ResultSet sender dataen over i programmet
         resultSet = statement.executeQuery(query);

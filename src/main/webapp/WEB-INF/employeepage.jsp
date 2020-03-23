@@ -46,74 +46,30 @@
 <div class="container">
     <img src="Images/LoginBackground.png" class="img-fluid mb-4" alt="Logo" width="100%" height=auto>
 
-    <h1 class="text-center mb-4">Velkommen ${sessionScope.name}</h1>
-
-    - Man kan kun opdatere beløbet
-    <br>
-    - Kundelisten bliver ikke opdateret
-    <br>
-    - Man kan godt slette flere ordre men listen bliver ikke opdateret
-    <br>
-    <br>
-
-    Indsæt beløb på kundekonto:
-    <form name="balance" action="FrontController" method="POST" >
-        <input type="hidden" name="target" value="balance">
-
-        <div class="form-group">
-            <label for="email">Indtast email:</label>
-            <input type="text" name="email" class="form-control" id="email" placeholder="email">
-        </div>
-        <div class="form-group">
-            <label for="amount">Indtast beløbet der skal indsættes:</label>
-            <input type="number" name="amount" class="form-control" id="amount" placeholder="Beløb">
-        </div>
-
-        <div class="text-center">
-            <button type="submit" class="btn btn-dark mt-3">Indsæt beløb</button>
-        </div>
-    </form>
-    <br>
-    <br>
-    <br>
-    <br>
+    <h1 class="text-center mb-4">Velkommen ${sessionScope.navn}</h1>
 
     <div class="row">
         <div class="col-md-6 text-center">
-            <h6>Se alle ordre:</h6>
-            <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#AlleOrdre" aria-expanded="false" aria-controls="AlleOrdre">
-                Alle ordre
-            </button>
-            <div class="collapse" id="AlleOrdre">
-                <div class="card card-body">
-                    <c:forEach var="order" items="${applicationScope.orderList}">
-                        Ordre: ${order.orderID}. Dato: ${order.date}. Ordren er lavet af: ${order.email} (${order.customerID})
-                        <br><br>
-                    </c:forEach>
+            <h6>Indsæt beløb på kundekonto:</h6>
+            <form name="balance" action="FrontController" method="POST" >
+                <input type="hidden" name="target" value="balance">
+
+                <div class="form-group text-left">
+                    <label for="email">Indtast email:</label>
+                    <input type="text" name="email" class="form-control" id="email" placeholder="Email">
                 </div>
-            </div>
-        </div>
+                <div class="form-group text-left">
+                    <label for="amount">Indtast beløbet der skal indsættes:</label>
+                    <input type="number" name="amount" class="form-control" id="amount" placeholder="Beløb">
+                </div>
 
-
-        <div class="col-md-6 text-center">
-            <h6>Slet ordre:</h6>
-            <form name="employee" action="FrontController" method="POST" >
-                <input type="hidden" name="target" value="employee">
-                <div class="input-group mb-3">
-                    <input type="number" class="form-control" name="orderID" placeholder="OrderID" aria-label="OrderID" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit">Delete</button>
-                    </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-secondary mt-3">Indsæt beløb</button>
                 </div>
             </form>
-            ${requestScope.message}
         </div>
-    </div>
 
-    <br>
-
-    <div class="row">
-        <div class="col-md-12 text-center">
+        <div class="col-md-6 text-center">
             <h6>Se alle kunder:</h6>
             <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#AlleKunder" aria-expanded="false" aria-controls="AlleKunder">
                 Alle kunder
@@ -127,46 +83,67 @@
                 </div>
             </div>
         </div>
+
     </div>
 
-    <br>
+<br>
+<br>
 
     <div class="row">
-        <div class="col-md-4 text-center">
+
+        <div class="col-md-6 text-center">
+            <h6>Se alle ordre:</h6>
+            <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#AlleOrdre" aria-expanded="false" aria-controls="AlleOrdre">
+                Alle ordre
+            </button>
+
+            <br>
+            <div class="collapse" id="AlleOrdre">
+                <div class="card card-body">
+                    <c:forEach var="order" items="${applicationScope.orderList}">
+                        Ordre: ${order.orderID}. Dato: ${order.date}. Ordren er lavet af: ${order.email} (${order.customerID})
+                        <br><br>
+                    </c:forEach>
+                </div>
+            </div>
+
+            <br>
+
+            <h6>Slet ordre:</h6>
+            <form name="employee" action="FrontController" method="POST" >
+                <input type="hidden" name="target" value="employee">
+                <div class="input-group mb-3">
+                    <input type="number" class="form-control" name="orderID" placeholder="OrderID" aria-label="OrderID" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit">Delete</button>
+                    </div>
+                </div>
+            </form>
+            ${requestScope.messageOrdre}
+
+        </div>
+
+        <div class="col-md-6 text-center">
             <h6>Se alle kunder og deres ordre:</h6>
             <button class="btn btn-secondary" type="button" data-toggle="collapse" data-target="#Ordre" aria-expanded="false" aria-controls="Ordre">
                 Ordre
             </button>
             <div class="collapse" id="Ordre">
                 <div class="card card-body">
-                    <c:forEach var="CO" items="${applicationScope.customerOrderList}">
-                        OrderID-${CO.orderID} ${CO.date}.
-                        <br>Lavet af ${CO.name} (ID-${CO.customerID})
+                    <c:forEach var="CO" items="${applicationScope.indiOrderList}">
+                        OrderID-${CO.orderID}. Dato: ${CO.date}. Lavet af ${CO.email}:
+                        <br>Topping: ${CO.toppingName} (${CO.toppingPrice}). Bund: ${CO.bottomName} (${CO.bottomPrice})
+                        Antal: ${CO.quantity}.
+                        <br>Samlet beløb: ${CO.sum}
                         <br><br>
                     </c:forEach>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-4 text-center">
-            <h6>Detaljer om individuelle ordre:</h6>
-            <div class="form-group">
-                <input type="number" name="orderID" class="form-control" id="orderID" placeholder="OrderID">
-            </div>
-            
-
-            
-            <c:forEach var="CO" items="${applicationScope.indiOrderList}">
-
-                <br><br>
-            </c:forEach>
-
-        </div>
-
     </div>
-
-
-
+<br>
+<br>
     <div class="text-center mt-3">
         <a class="btn btn-outline-dark"
            href="FrontController?target=redirect&destination=index" role="button">Tilbage til start</a>
@@ -174,6 +151,12 @@
 
 </div>
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 </body>
 </html>

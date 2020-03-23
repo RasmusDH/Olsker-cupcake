@@ -1,15 +1,19 @@
 package PresentationLayer;
 
+import DBAccess.CustomerMapper;
 import DBAccess.UserMapper;
 import FunctionLayer.Customer;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
+import UtilClass.Initializer;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Balance extends Command {
     @Override
@@ -18,11 +22,15 @@ public class Balance extends Command {
         String email = request.getParameter("email");
         double amount = Double.parseDouble(request.getParameter("amount"));
 
-        double insert = (amount);
 
-        LogicFacade.insert(email, insert);
-        //LogicFacade.insertBalance(id, balance);
 
-        return "Employeepage";
+        double balance = amount + Customer.balance;
+        System.out.println("Første: " + Customer.balance);
+
+        LogicFacade.insert(email, balance);
+
+        System.out.println("Anden: " + Customer.balance);
+
+        return "employeepage";
     }
 }

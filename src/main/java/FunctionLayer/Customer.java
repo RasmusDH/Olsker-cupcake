@@ -7,7 +7,7 @@ public class Customer {
     private String email;
     private String password;
     private String role;
-    private double balance;
+    public static double balance;
 
     public Customer(String name, String email, String password, String role, double balance) {
         this.name = name;

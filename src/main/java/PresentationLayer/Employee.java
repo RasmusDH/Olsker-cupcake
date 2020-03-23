@@ -23,7 +23,7 @@ public class Employee extends Command {
 
         //Initializer.getOrderList().remove(order);
 
-        request.setAttribute("message", "Ordre slettet");
+        request.setAttribute("messageOrdre", "Ordre slettet");
 
 
 

@@ -18,7 +18,7 @@ public class IndividualOrderMapper {
 
         try {
             Connector con = new Connector();
-            String SQL = "SELECT * FROM cupcake_shop.individualorders;";
+            String SQL = "SELECT * FROM cupcake_shop.individualorders order by Date";
             PreparedStatement ps = con.getConnector().prepareStatement( SQL );
             ResultSet rs = ps.executeQuery();
             while ( rs.next() ) {
