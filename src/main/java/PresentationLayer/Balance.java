@@ -24,12 +24,9 @@ public class Balance extends Command {
 
 
 
-        double balance = amount + Customer.balance;
-        System.out.println("Første: " + Customer.balance);
+        double balance = amount ;
 
         LogicFacade.insert(email, balance);
-
-        System.out.println("Anden: " + Customer.balance);
 
         return "employeepage";
     }

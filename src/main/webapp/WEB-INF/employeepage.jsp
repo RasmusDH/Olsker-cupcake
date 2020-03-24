@@ -25,6 +25,12 @@
 
     <title>Employee</title>
 
+    <script type="text/javascript">
+        function refreshPage(){
+            location.reload();
+        }
+    </script>
+
 </head>
 <body>
 
@@ -64,7 +70,7 @@
                 </div>
 
                 <div class="text-center">
-                    <button type="submit" class="btn btn-secondary mt-3">Indsæt beløb</button>
+                    <button type="submit" class="btn btn-secondary mt-3" onclick="refreshPage()">Indsæt beløb</button>
                 </div>
             </form>
         </div>
@@ -87,6 +93,7 @@
     </div>
 
 <br>
+    <hr>
 <br>
 
     <div class="row">

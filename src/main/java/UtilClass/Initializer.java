@@ -10,7 +10,7 @@ public class Initializer {
 
     private static List<Topping> toppingList;
     private static List<Bottom> bottomList;
-    private static List<Customer> customerList = null;
+    private static List<User> customerList = null;
     private static List<Order> customerOrderList = null;
     private static List<IndividualOrder> individualOrderList = null;
 
@@ -72,7 +72,7 @@ public class Initializer {
 
 
 
-    public static List<Customer> getCustomerList() {
+    public static List<User> getCustomerList() {
         if (customerList == null){
             try {
                 customerList = LogicFacade.getAllCustomers();
@@ -82,6 +82,7 @@ public class Initializer {
         }
         return customerList;
     }
+
     public static List<Order> getCustomerOrderList() {
         if (customerOrderList == null){
             try {

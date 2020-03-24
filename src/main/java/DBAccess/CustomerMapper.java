@@ -1,48 +1,44 @@
 package DBAccess;
 
-import FunctionLayer.Customer;
-import FunctionLayer.CustomerOrder;
-import FunctionLayer.LoginSampleException;
-import FunctionLayer.User;
+import FunctionLayer.*;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CustomerMapper {
 
-    public static ArrayList<Customer> customerList() throws SQLException, ClassNotFoundException{
-        ArrayList<Customer> returnList = new ArrayList<>();
-        Connector con = new Connector();
 
-        // TODO: hent fra databasen
-        Statement statement = null;
-        ResultSet resultSet = null;
+    public static ArrayList<User> customerList() throws LoginSampleException {
 
-        String query = "SELECT * FROM cupcake_shop.customers";
-        statement = con.getConnector().createStatement();
-        // ResultSet sender dataen over i programmet
-        resultSet = statement.executeQuery(query);
+        ArrayList<User> listOfCustomers = null;
 
-        //executeUpdate
-        while (resultSet.next()){
-            String name = resultSet.getString("Name");
-            String email = resultSet.getString("Email");
-            String password = resultSet.getString("Password");
-            String role = resultSet.getString("Role");
-            double balance = resultSet.getDouble("Balance");
-            int id = resultSet.getInt("CustomerID");
-            Customer tmpCus = new Customer(name, email, password, role, balance);
-            tmpCus.setId(id);
-            returnList.add(tmpCus);
+        try {
+            Connector con = new Connector();
+            String SQL = "SELECT * FROM cupcake_shop.customers";
+            PreparedStatement ps = con.getConnector().prepareStatement( SQL );
+            ResultSet rs = ps.executeQuery();
+            while ( rs.next() ) {
+                if (listOfCustomers == null){
+                    listOfCustomers = new ArrayList<>();
+                }
+                String name = rs.getString("Name");
+                String email = rs.getString("Email");
+                String password = rs.getString("Password");
+                String role = rs.getString("Role");
+                double balance = rs.getDouble("Balance");
+                int id = rs.getInt("CustomerID");
+                User tmpCus = new User(name, email, password, role, balance);
+                tmpCus.setId(id);
+                listOfCustomers.add(tmpCus);
+
+            }
+        } catch ( ClassNotFoundException | SQLException ex ) {
+            throw new LoginSampleException(ex.getMessage());
         }
-
-        // Lukker efter mig:
-        resultSet.close();
-        statement.close();
-
-
-        return returnList;
+        return listOfCustomers;
     }
+
 
     public static void insert(String email, double amount) {
 
@@ -63,30 +59,6 @@ public class CustomerMapper {
         }
     }
 
-    public static void insertBalance(int id, double balance) throws LoginSampleException, SQLException, ClassNotFoundException {
-
-        Connector con = new Connector();
-        String SQL = "UPDATE cupcake_shop.customers SET Balance ='" + balance + "' where CustomerID='" + id + "'";
-        PreparedStatement ps = con.getConnector().prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-
-        ps.setDouble(1, balance);
-        ps.setInt(2, id);
-        ResultSet rs = ps.executeQuery();
-        if (rs.next()) {
-            String name = rs.getString("Name");
-            String email = rs.getString("Email");
-            String password = rs.getString("Password");
-            String role = rs.getString("role");
-
-            double firstBalance = rs.getDouble("Balance");
-            id = rs.getInt("ID");
-
-            User user = new User(name, email, password, role);
-            user.setId(id);
-            balance = firstBalance+balance;
-            //user.setBalance(balance);
-        }
-    }
 
 
 }

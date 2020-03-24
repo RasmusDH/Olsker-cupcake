@@ -67,7 +67,7 @@ public class LogicFacade {
 
 
 
-    public static ArrayList<Customer> getAllCustomers() throws LoginSampleException, SQLException, ClassNotFoundException {
+    public static ArrayList<User> getAllCustomers() throws LoginSampleException, SQLException, ClassNotFoundException {
         return CustomerMapper.customerList();
     }
 
