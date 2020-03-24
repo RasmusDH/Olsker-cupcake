@@ -3,6 +3,7 @@ package PresentationLayer;
 import DBAccess.BottomMapper;
 import DBAccess.ToppingMapper;
 import FunctionLayer.*;
+import FunctionLayer.Kurv;
 import UtilClass.Initializer;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,9 +14,9 @@ import java.util.ArrayList;
 
 public class Bestilling extends Command {
 
-    public static ArrayList<Cupcake> kurv = new ArrayList<>();
 
-    static double finalPrice = 0;
+
+    double finalPrice = 0.0;
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, SQLException, ClassNotFoundException {
@@ -24,25 +25,18 @@ public class Bestilling extends Command {
         ArrayList<Topping> toppings = ToppingMapper.getTopping();
 
         HttpSession session = request.getSession();
+        Kurv kurv = (Kurv) session.getAttribute("kurv");
 
         int antal = Integer.parseInt(request.getParameter("quantity"));
         String bottom = request.getParameter("bund");
         String topping = request.getParameter("top");
 
         Cupcake temp = new Cupcake(getTopping(toppings, topping), getBottom(bottoms, bottom), antal);
-        kurv.add(temp);
+        kurv.addCupcake(temp);
 
         request.setAttribute("toppings", Initializer.getToppingList());
         request.setAttribute("bottoms", Initializer.getBottomList());
-        session.setAttribute("cart", kurv);
-
-
-        for (Cupcake cupcake:kurv){
-             finalPrice += cupcake.cupcakePriceCalculator();
-        }
-
-        session.setAttribute("finalPrice", finalPrice);
-
+        session.setAttribute("kurv", kurv);
 
         return "bestilling";
     }

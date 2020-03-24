@@ -41,13 +41,12 @@
             </span>
         </h4>
         <div class="card card-body">
-            <c:forEach var="cupcake" items="${sessionScope.cart}">
-                ${cupcake}
-                <br><br>
+            <c:forEach var="cupcake" items="${sessionScope.kurv.cupcakeList}">
+                Topping:  ${cupcake.topping.name} (${cupcake.topping.toppingPrice}) kr.</br>
             </c:forEach>
         </div>
         <hr>
-        <p>Total: <span class="price" style="color:black"><b>${sessionScope.finalPrice}</b></span></p>
+        <p>Total: <span class="price" style="color:black"><b>${sessionScope.kurv.totalSum}</b></span></p>
     </div>
 
 <br>

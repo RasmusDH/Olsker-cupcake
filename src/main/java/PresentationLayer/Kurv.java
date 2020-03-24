@@ -18,22 +18,14 @@ public class Kurv extends Command {
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException, SQLException, ClassNotFoundException {
         HttpSession session = request.getSession();
-        double finalPrice = Bestilling.finalPrice;
-
-
+        FunctionLayer.Kurv kurv = (FunctionLayer.Kurv) session.getAttribute("kurv");
+        session.setAttribute("finalPrice", kurv.getTotalSum());
+        request.setAttribute("kurv", kurv.getCupcakeList());
         double balance = 500;
-
-        balance = balance - finalPrice;
+        balance -= kurv.getTotalSum();
         System.out.println(balance);
-        session.setAttribute("balanceKurv", balance);
-        Bestilling.kurv.clear();
-        session.removeAttribute("finalPrice");
-        finalPrice = 0;
-        session.setAttribute("finalPrice", finalPrice);
-
         return "kurv";
     }
-
 
 
 }

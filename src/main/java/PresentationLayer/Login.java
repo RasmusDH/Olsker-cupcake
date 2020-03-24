@@ -1,5 +1,6 @@
 package PresentationLayer;
 
+import FunctionLayer.Kurv;
 import FunctionLayer.LogicFacade;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.User;
@@ -21,7 +22,12 @@ public class Login extends Command {
         User user = LogicFacade.login( email, password );
 
         HttpSession session = request.getSession();
+        Kurv kurv = (Kurv) session.getAttribute("kurv");
+        if (kurv == null) {
+            kurv = new Kurv();
+        }
 
+        session.setAttribute("kurv", kurv);
         session.setAttribute( "user", user );
         session.setAttribute("navn", user.getName());
         session.setAttribute( "role", user.getRole() );

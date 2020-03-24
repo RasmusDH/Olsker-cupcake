@@ -13,11 +13,6 @@ public class Cupcake {
 
     private double cupcakePrice;
 
-    private int cupcakeID;
-    private int topID;
-    private int botID;
-
-
     public double cupcakePriceCalculator() {
 
         cupcakePrice = (topping.getToppingPrice() + bottom.getBottomPrice())*antal;
@@ -29,9 +24,9 @@ public class Cupcake {
         this.topping = topping;
         this.bottom = bottom;
         this.antal = antal;
+        cupcakePriceCalculator();
 
     }
-
 
 
     public Topping getTopping() {
@@ -40,14 +35,6 @@ public class Cupcake {
 
     public void setTopping(Topping topping) {
         this.topping = topping;
-    }
-
-    public int getCupcakeID() {
-        return cupcakeID;
-    }
-
-    public void setCupcakeID(int cupcakeID) {
-        this.cupcakeID = cupcakeID;
     }
 
     public Bottom getBottom() {
@@ -66,24 +53,9 @@ public class Cupcake {
         this.cupcakePrice = cupcakePrice;
     }
 
-    public int getTopID() {
-        return topID;
-    }
-
-    public void setTopID(int topID) {
-        this.topID = topID;
-    }
-
-    public int getBotID() {
-        return botID;
-    }
-
-    public void setBotID(int botID) {
-        this.botID = botID;
-    }
 
     @Override
     public String toString() {
-        return bottom + " bund med " + topping + " topping. " + antal + " stk.";
+        return bottom.getName() + " bund med " + topping.getName() + " topping. " + antal + " stk.";
     }
 }
