@@ -41,9 +41,6 @@
     if (request.getServletContext().getAttribute("customerList") == null) {
         request.getServletContext().setAttribute("customerList", Initializer.getCustomerList());
     }
-    if (request.getServletContext().getAttribute("customerOrderList") == null) {
-        request.getServletContext().setAttribute("customerOrderList", Initializer.getCustomerOrderList());
-    }
     if (request.getServletContext().getAttribute("indiOrderList") == null) {
         request.getServletContext().setAttribute("indiOrderList", Initializer.getListOfIndiOrders());
     }

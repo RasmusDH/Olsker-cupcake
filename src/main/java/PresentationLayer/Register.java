@@ -18,8 +18,10 @@ public class Register extends Command {
         String password1 = request.getParameter( "password1" );
         String password2 = request.getParameter( "password2" );
        if ( password1.equals( password2 ) ) {
+
             Customer customer = LogicFacade.createCustomer( navn, email, password1 );
             User user = LogicFacade.createUser(navn, email, password1);
+
             HttpSession session = request.getSession();
 
             session.setAttribute("navn",navn);

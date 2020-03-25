@@ -1,5 +1,6 @@
 package DBAccess;
 
+import FunctionLayer.Customer;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
 
@@ -36,9 +37,6 @@ public class OrdreMapper {
     }
 
 
-
-
-
     public static void deleteOrder(int orderID) {
         Connector myConnector = new Connector();
 
@@ -60,21 +58,21 @@ public class OrdreMapper {
 
     }
 
-    public static void insertOrdre(int Quantity,
-                                   double Sum, int ToppingID, int BottomID) throws LoginSampleException {
+    public static void insertOrder(Order order) throws LoginSampleException {
         try {
             Connector con = new Connector();
-            String SQL = "INSERT INTO orderline(Quantity, Sum, ToppingID, BottomID) " +
-                    "VALUES (?,?,?,?)";
-            PreparedStatement ps = con.getConnector().prepareStatement(SQL);
+            String SQL = "INSERT INTO cupcake_shop.orders2 (email, customerID, date) VALUES (?, ?, ?)";
+            PreparedStatement ps = con.getConnector().prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, order.getEmail());
+            ps.setInt(2, order.getCustomerID());
+            ps.setDate(3, (Date) order.getDate());
+            ps.executeUpdate();
 
-            ps.setInt(1, Quantity);
-            ps.setDouble(2, Sum);
-            ps.setInt(3, ToppingID);
-            ps.setInt(4, BottomID);
-
-            int result = ps.executeUpdate();
-        } catch (ClassNotFoundException | SQLException ex) {
+            ResultSet ids = ps.getGeneratedKeys();
+            ids.next();
+            int id = ids.getInt(1);
+            order.setOrderID(id);
+        } catch (SQLException | ClassNotFoundException ex) {
             throw new LoginSampleException(ex.getMessage());
         }
     }

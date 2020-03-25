@@ -4,6 +4,7 @@ import DBAccess.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,42 +30,9 @@ public class LogicFacade {
     }
 
 
-    public static List<Topping> getAllToppings() throws LoginSampleException {
-        return ToppingMapper.getTopping();
-    }
-    public static List<Bottom> getAllBottoms() throws LoginSampleException {
-        return BottomMapper.getBottom();
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
     public static List<Order> getAllOrders() throws LoginSampleException {
         return OrdreMapper.listOfOrders();
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     public static ArrayList<User> getAllCustomers() throws LoginSampleException, SQLException, ClassNotFoundException {
@@ -75,20 +43,25 @@ public class LogicFacade {
         CustomerMapper.insert(email, amount);
     }
 
-    public static ArrayList<Order> customerOrderList() throws SQLException, ClassNotFoundException{
-        return CustomerOrderMapper.customerOrderList();
-    }
-
 
     public static List<IndividualOrder> listOfIndiOrders() throws LoginSampleException {
         return IndividualOrderMapper.listOfIndiOrders();
     }
 
 
+// Insert bestilling:
 
-    public static void insertOrdre(int Quantity,
-                                   double Sum, int ToppingID, int BottomID) throws LoginSampleException {
-        OrdreMapper.insertOrdre(Quantity, Sum, ToppingID, BottomID);
+    public static void insertOrder(String email, int customerID, Date date) throws LoginSampleException {
+        Order order = new Order(email, customerID, date);
+        OrdreMapper.insertOrder(order);
+    }
+    public static void insertIndiOrdre(int orderID, Date date, String email, String toppingName,
+             double toppingPrice, String bottomName, double bottomPrice, int quantity, double sum) throws LoginSampleException {
+
+        IndividualOrder indiOrder = new IndividualOrder(orderID, date, email, toppingName, toppingPrice, bottomName,
+                                    bottomPrice, quantity, sum);
+
+        IndividualOrderMapper.insertIndiOrdre(indiOrder);
     }
 
 

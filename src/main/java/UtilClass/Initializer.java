@@ -11,7 +11,6 @@ public class Initializer {
     private static List<Topping> toppingList;
     private static List<Bottom> bottomList;
     private static List<User> customerList = null;
-    private static List<Order> customerOrderList = null;
     private static List<IndividualOrder> individualOrderList = null;
 
     public static void initToppings() {
@@ -83,16 +82,6 @@ public class Initializer {
         return customerList;
     }
 
-    public static List<Order> getCustomerOrderList() {
-        if (customerOrderList == null){
-            try {
-                customerOrderList = LogicFacade.customerOrderList();
-            } catch (Exception e){
-                e.printStackTrace();
-            }
-        }
-        return customerOrderList;
-    }
 
     public static List<IndividualOrder> getListOfIndiOrders() {
         if (individualOrderList == null){

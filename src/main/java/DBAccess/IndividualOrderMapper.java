@@ -45,4 +45,55 @@ public class IndividualOrderMapper {
         return listOfIndiOrders;
     }
 
+    public static void insertIndiOrdre(IndividualOrder indiOrder) throws LoginSampleException {
+        try {
+            Connector con = new Connector();
+            String SQL = "INSERT INTO cupcake_shop.individualorders" +
+                    "(OrderID, Date, Email, Topping, ToppingPrice, Bottom, BottomPrice, Quantity, Sum) " +
+                    "VALUES (?,?,?,?, ?, ?, ?, ?, ?)";
+            PreparedStatement ps = con.getConnector().prepareStatement(SQL);
+
+            ps.setInt(1, indiOrder.getOrderID());
+            ps.setDate(2, (Date) indiOrder.getDate());
+            ps.setString(3, indiOrder.getEmail());
+            ps.setString(4, indiOrder.getToppingName());
+            ps.setDouble(5, indiOrder.getToppingPrice());
+            ps.setString(6, indiOrder.getBottomName());
+            ps.setDouble(7, indiOrder.getBottomPrice());
+            ps.setInt(8, indiOrder.getQuantity());
+            ps.setDouble(9, indiOrder.getSum());
+            ps.executeUpdate();
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            throw new LoginSampleException(ex.getMessage());
+        }
+    }
+    /*
+    public static void insertIndiOrdre(int OrderID, Date Date, String Email, String Topping, double ToppingPrice,
+                                   String Bottom, double BottomPrice, int Quantity, double Sum) throws LoginSampleException {
+        try {
+            Connector con = new Connector();
+            String SQL = "INSERT INTO cupcake_shop.individualorders" +
+                    "(OrderID, Date, Email, Topping, ToppingPrice, Bottom, BottomPrice, Quantity, Sum) " +
+                    "VALUES (?,?,?,?, ?, ?, ?, ?, ?)";
+            PreparedStatement ps = con.getConnector().prepareStatement(SQL);
+
+            ps.setInt(1, OrderID);
+            ps.setDate(2, Date);
+            ps.setString(3, Email);
+            ps.setString(4, Topping);
+            ps.setDouble(5, ToppingPrice);
+            ps.setString(6, Bottom);
+            ps.setDouble(7, BottomPrice);
+            ps.setInt(8, Quantity);
+            ps.setDouble(9, Sum);
+            ps.executeUpdate();
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            throw new LoginSampleException(ex.getMessage());
+        }
+    }
+
+     */
+
 }

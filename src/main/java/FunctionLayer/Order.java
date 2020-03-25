@@ -15,11 +15,12 @@ public class Order {
         this.orderID = orderID;
     }
 
-    public Order(int orderID, Date date, String name, int customerID) {
+    public Order(int orderID, String email, int customerID, Date date) {
         this.orderID = orderID;
-        this.date = date;
-        this.name = name;
+        this.email = email;
         this.customerID = customerID;
+        this.date = date;
+
     }
 
     public Order(Date date, int customerID) {
@@ -27,8 +28,7 @@ public class Order {
         this.customerID = customerID;
     }
 
-    public Order(int orderID, String email, int customerID, Date date) {
-        this.orderID = orderID;
+    public Order(String email, int customerID, Date date) {
         this.email = email;
         this.customerID = customerID;
         this.date = date;

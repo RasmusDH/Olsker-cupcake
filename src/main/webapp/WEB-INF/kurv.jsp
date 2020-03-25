@@ -42,7 +42,9 @@
         </h4>
         <div class="card card-body">
             <c:forEach var="cupcake" items="${sessionScope.kurv.cupcakeList}">
-                Topping:  ${cupcake.topping.name} (${cupcake.topping.toppingPrice}) kr.</br>
+                ${cupcake.bottom.name} bund (${cupcake.bottom.bottomPrice} kr.) med ${cupcake.topping.name} topping
+                (${cupcake.topping.toppingPrice} kr.).     Antal: ${cupcake.antal}. Pris: ${cupcake.cupcakePrice}
+                <br>
             </c:forEach>
         </div>
         <hr>

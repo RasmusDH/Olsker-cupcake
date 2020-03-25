@@ -49,10 +49,9 @@ public class Cupcake {
         return cupcakePrice;
     }
 
-    public void setCupcakePrice(double cupcakePrice) {
-        this.cupcakePrice = cupcakePrice;
+    public int getAntal() {
+        return antal;
     }
-
 
     @Override
     public String toString() {
