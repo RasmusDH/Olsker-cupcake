@@ -16,7 +16,7 @@ public class OrdreMapper {
 
         try {
             Connector con = new Connector();
-            String SQL = "SELECT * FROM cupcake_shop.orders2";
+            String SQL = "SELECT * FROM orders";
             PreparedStatement ps = con.getConnector().prepareStatement( SQL );
             ResultSet rs = ps.executeQuery();
             while ( rs.next() ) {
@@ -42,7 +42,7 @@ public class OrdreMapper {
 
         try {
             myConnector.getConnector();
-            String sql = "delete from cupcake_shop.orders2 where OrderID =?";
+            String sql = "delete from orders where OrderID =?";
             System.out.println("SQL:" + sql);
             PreparedStatement ps = myConnector.getConnector().prepareStatement(sql);
             ps.setInt(1, orderID);
@@ -61,7 +61,7 @@ public class OrdreMapper {
     public static void insertOrder(Order order) throws LoginSampleException {
         try {
             Connector con = new Connector();
-            String SQL = "INSERT INTO cupcake_shop.orders2 (email, customerID, date) VALUES (?, ?, ?)";
+            String SQL = "INSERT INTO orders (email, customerID, date) VALUES (?, ?, ?)";
             PreparedStatement ps = con.getConnector().prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, order.getEmail());
             ps.setInt(2, order.getCustomerID());

@@ -15,7 +15,7 @@ public class CustomerMapper {
 
         try {
             Connector con = new Connector();
-            String SQL = "SELECT * FROM cupcake_shop.customers";
+            String SQL = "SELECT * FROM customers";
             PreparedStatement ps = con.getConnector().prepareStatement( SQL );
             ResultSet rs = ps.executeQuery();
             while ( rs.next() ) {
@@ -42,7 +42,7 @@ public class CustomerMapper {
 
     public static void insert(String email, double amount) {
 
-        String SQL = "UPDATE cupcake_shop.customers SET Balance = ? WHERE Email = ?";
+        String SQL = "UPDATE customers SET Balance = ? WHERE Email = ?";
 
         Connector conn = new Connector();
         try (

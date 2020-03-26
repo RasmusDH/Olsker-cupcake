@@ -13,7 +13,7 @@ public class Connector {
 
     public Connection getConnector() throws ClassNotFoundException, SQLException{
         Connection connector = null;
-        String url = "jdbc:mysql://localhost:3306/cupcake_shop?serverTimezone=UTC&allowPublicKeyRetrieval=" +
+        String url = "jdbc:mysql://localhost:3306/olskerscupcakes?serverTimezone=UTC&allowPublicKeyRetrieval=" +
                 "true&useSSL=false";
         String user = "root";
         String password = "Kat4Kanin5Hund1Hamster1";

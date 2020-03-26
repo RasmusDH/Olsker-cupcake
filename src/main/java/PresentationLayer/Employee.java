@@ -1,6 +1,5 @@
 package PresentationLayer;
 
-import DBAccess.OldOrderMapper;
 import DBAccess.OrdreMapper;
 import FunctionLayer.*;
 import UtilClass.Initializer;
@@ -8,7 +7,6 @@ import UtilClass.Initializer;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class Employee extends Command {
     @Override

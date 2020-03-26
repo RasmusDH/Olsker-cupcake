@@ -18,7 +18,7 @@ public class IndividualOrderMapper {
 
         try {
             Connector con = new Connector();
-            String SQL = "SELECT * FROM cupcake_shop.individualorders order by Date";
+            String SQL = "SELECT * FROM individualorders order by Date";
             PreparedStatement ps = con.getConnector().prepareStatement( SQL );
             ResultSet rs = ps.executeQuery();
             while ( rs.next() ) {
@@ -48,7 +48,7 @@ public class IndividualOrderMapper {
     public static void insertIndiOrdre(IndividualOrder indiOrder) throws LoginSampleException {
         try {
             Connector con = new Connector();
-            String SQL = "INSERT INTO cupcake_shop.individualorders" +
+            String SQL = "INSERT INTO individualorders" +
                     "(OrderID, Date, Email, Topping, ToppingPrice, Bottom, BottomPrice, Quantity, Sum) " +
                     "VALUES (?,?,?,?, ?, ?, ?, ?, ?)";
             PreparedStatement ps = con.getConnector().prepareStatement(SQL);
