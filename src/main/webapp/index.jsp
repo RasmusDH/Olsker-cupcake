@@ -106,10 +106,10 @@
 
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="./Images/Gruppe4.jpg" alt=""></a>
+                <a href="#"><img class="card-img-top" src="./Images/Bornholm.jpg" alt=""></a>
                 <div class="card-body">
                     <h4 class="card-title">
-                        <a href="#" style="text-decoration: none">Vores Gruppe</a>
+                        <a href="#" style="text-decoration: none">Olsker Cupcakes</a>
                     </h4>
                     <p class="card-text">Her vil De finde vores kontakt information.</p>
                 </div>
