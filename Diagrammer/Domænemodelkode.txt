@@ -1,0 +1,67 @@
+@startuml
+
+title Domænemodel
+
+
+class Customer {
+  +Int id
+  +String name
+  +String email
+  +String password
+  +String role
+  +double balance
+  +void Customer()
+}
+
+class Admin{
+  +Int id
+  +String name
+  +String email
+  +String password
+  +String role
+  +double balance
+  +void Employee()
+}
+
+class Topping{
+  +Int Id
+  +String name
+  +double price
+  +void Topping()
+}
+class Bottom{
+  +Int Id
+  +String name
+  +double price
+  +void Bottom()
+}
+
+class Cupcake{
+  +String topping
+  +double toppingPris
+  +String bottom
+  +double bottomPris
+  +Int antal
+  +double cupcakePrice
+  +Topping getTopping()
+  +Bottom getBottom()
+}
+
+class Bestilling{
+  +Cupcake cupcake
+  +void tilføjTilKurv()
+}
+
+class Kurv{
+  +ArrayList kurv
+  +double totalPrice
+}
+
+Customer "1" *-down- "many" Bestilling
+Bestilling "many" *-up- "1" Kurv
+Topping "1" *-down- "1" Cupcake
+Bottom "1" *-down- "1" Cupcake
+Admin "1" *-down- "many" Bestilling: Kan se
+Cupcake "many"*-left- "1" Bestilling
+
+@enduml

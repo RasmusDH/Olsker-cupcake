@@ -1,0 +1,16 @@
+@startuml
+
+left to right direction
+skinparam packageStyle rectangle
+actor Kunde
+actor Administrator
+rectangle Use-Case {
+  Kunde -- (Bestil cupcakes)
+  (Indsæt beløb) -- Administrator
+  Kunde -- (Opret profil)
+  (Se kunder) -- Administrator
+  (Se kurver) -- Administrator
+  Kunde -- (Betal ordre)
+}
+
+@enduml

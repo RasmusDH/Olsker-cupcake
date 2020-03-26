@@ -7,9 +7,6 @@
         <img src="Images/LogoUdenBaggrund.png" width="90" height="auto">
           Olsker Cupcakes
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
     <div class="collapse navbar-collapse mr-4" id="navbarNavDropdown" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item active">

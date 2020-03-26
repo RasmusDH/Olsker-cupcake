@@ -36,7 +36,7 @@ public class Kurv extends Command {
         IndividualOrderMapper.insertIndiOrdre(indiOrder);
     }
          */
-        
+
 
 
         double balance = 500;

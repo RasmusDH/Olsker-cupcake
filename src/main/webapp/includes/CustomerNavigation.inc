@@ -1,11 +1,3 @@
-<%-- 
-    Document   : customerpage
-    Created on : Aug 22, 2017, 2:33:37 PM
-    Author     : kasper
---%>
-
-<%@include file="../includes/indexHeader.inc"%>
-
 <!-- Navigation -->
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light" style="border-bottom: 2px solid black;">
     <a class="navbar-brand ml-4 c" href="FrontController?target=redirect&destination=customerpage">
@@ -29,5 +21,3 @@
         </ul>
     </div>
 </nav>
-
-<%@include file="../includes/customerpageFooter.inc"%>

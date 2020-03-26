@@ -1,0 +1,33 @@
+@startuml
+title Navigationsdiagram
+[*] --> Forside
+state Forside
+    Forside: index.jsp
+
+state Customer
+state "Login som Customer" as Customer {
+  state CustomerForside
+    CustomerForside: customerpage.jsp
+  state BestilCupcakes
+    BestilCupcakes : bestilling.jsp
+  state Kurv
+    Kurv: kurv.jsp
+  CustomerForside --> BestilCupcakes
+  BestilCupcakes --> Kurv
+  Kurv --> BestilCupcakes
+  Kurv --> CustomerForside
+}
+
+state Admin
+state "Login som Admin" as Admin {
+  state AdminForside
+    AdminForside: employeepage.jsp
+  state TilbageTilStart
+    TilbageTilStart: index.jsp
+  AdminForside --> TilbageTilStart
+}
+
+Forside -Right-> Customer
+Forside -left-> Admin
+
+@enduml
