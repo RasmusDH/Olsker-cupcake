@@ -88,7 +88,7 @@
                 <div class="card card-body">
                     <c:forEach var="cupcake" items="${sessionScope.kurv.cupcakeList}">
                         ${cupcake.bottom.name} bund (${cupcake.bottom.bottomPrice} kr.) med ${cupcake.topping.name} topping
-                        (${cupcake.topping.toppingPrice} kr.).     Antal: ${cupcake.antal}. Pris: ${cupcake.cupcakePrice}
+                        (${cupcake.topping.toppingPrice} kr.). Antal: ${cupcake.antal}. Pris: ${cupcake.cupcakePrice}
                         <br>
                     </c:forEach>
                 </div>
@@ -101,9 +101,11 @@
                     <a href="FrontController?target=redirect&destination=bestilling"
                        class="btn btn-secondary mt-4 mb-3" role="button" aria-pressed="true">Bestil flere</a>
                 </div>
+
                 <div class="col-md-4 text-center mt-3 mb-3">
                     <button type="submit" class="btn btn-dark mt-4 mb-3">Betal</button>
                 </div>
+
                 <div class="col-md-4 text-center mt-3 mb-3">
                     <a href="FrontController?target=redirect&destination=customerpage"
                        class="btn btn-secondary mt-4 mb-3" role="button" aria-pressed="true">Gå til hovedmenu</a>
@@ -114,7 +116,6 @@
         </div>
 
     </form>
-
 
 
 </div>

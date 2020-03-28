@@ -3,6 +3,7 @@ package DBAccess;
 import FunctionLayer.Customer;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
+import FunctionLayer.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -58,20 +59,14 @@ public class OrdreMapper {
 
     }
 
-    public static void insertOrder(Order order) throws LoginSampleException {
+    public static void insertOrder(User user) throws LoginSampleException {
         try {
             Connector con = new Connector();
-            String SQL = "INSERT INTO orders (email, customerID, date) VALUES (?, ?, ?)";
+            String SQL = "INSERT INTO orders (Email, CustomerID) VALUES (?, ?)";
             PreparedStatement ps = con.getConnector().prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, order.getEmail());
-            ps.setInt(2, order.getCustomerID());
-            ps.setDate(3, (Date) order.getDate());
+            ps.setString(1, user.getEmail());
+            ps.setInt(2, user.getId());
             ps.executeUpdate();
-
-            ResultSet ids = ps.getGeneratedKeys();
-            ids.next();
-            int id = ids.getInt(1);
-            order.setOrderID(id);
         } catch (SQLException | ClassNotFoundException ex) {
             throw new LoginSampleException(ex.getMessage());
         }

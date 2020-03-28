@@ -2,6 +2,9 @@ package FunctionLayer;
 
 public class Bottom {
 
+    /**
+     * @author Emilie
+     */
 
     private int id; // just used to demo retrieval of autogen keys in UserMapper
     private String name;

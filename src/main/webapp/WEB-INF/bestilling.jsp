@@ -6,7 +6,6 @@
   User: miade
   Date: 16-03-2020
   Time: 09:28
-  To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -130,7 +129,7 @@
 <!-- Footer -->
 <footer class="py-5 bg-dark mt-5">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Gruppe4</p>
+        <p class="m-0 text-center text-white">Copyright &copy; Olskers Cupcakes</p>
     </div>
     <!-- /.container -->
 </footer>

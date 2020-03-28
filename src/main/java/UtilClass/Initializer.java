@@ -5,7 +5,9 @@ import DBAccess.ToppingMapper;
 import FunctionLayer.*;
 
 import java.util.List;
-
+/**
+ * @author Mia
+ */
 public class Initializer {
 
     private static List<Topping> toppingList;

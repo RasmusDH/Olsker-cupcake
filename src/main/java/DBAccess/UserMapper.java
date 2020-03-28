@@ -8,8 +8,6 @@ import FunctionLayer.User;
 import java.sql.*;
 
 /**
- The purpose of UserMapper is to...
-
  @author kasper
  */
 public class UserMapper {
@@ -54,6 +52,10 @@ public class UserMapper {
     }
 
 
+    /**
+    * @return returnerer brugeren fra databasen der har atributterene email og password der bliver indtastet
+    * @throws LoginSampleException emailen eller passwordet ikke passer kaster metoden LoginSampleException
+     */
     public static User login(String email, String password) throws LoginSampleException {
         try {
             Connector con = new Connector();

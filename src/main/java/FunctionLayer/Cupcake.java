@@ -7,6 +7,10 @@ import java.util.List;
 
 public class Cupcake {
 
+    /**
+     * @author Mia
+     */
+
     private Topping topping;
     private Bottom bottom;
     private int antal;

@@ -1,5 +1,6 @@
 package PresentationLayer;
 
+import DBAccess.OrdreMapper;
 import DBAccess.ToppingMapper;
 import FunctionLayer.*;
 
@@ -22,25 +23,14 @@ public class Kurv extends Command {
         session.setAttribute("finalPrice", kurv.getTotalSum());
         request.setAttribute("kurv", kurv.getCupcakeList());
 
-        /*
-         public static void insertOrder(String email, int customerID, Date date) throws LoginSampleException {
-        Order order = new Order(email, customerID, date);
-        OrdreMapper.insertOrder(order);
-    }
-    public static void insertIndiOrdre(int orderID, Date date, String email, String toppingName,
-             double toppingPrice, String bottomName, double bottomPrice, int quantity, double sum) throws LoginSampleException {
-
-        IndividualOrder indiOrder = new IndividualOrder(orderID, date, email, toppingName, toppingPrice, bottomName,
-                                    bottomPrice, quantity, sum);
-
-        IndividualOrderMapper.insertIndiOrdre(indiOrder);
-    }
-         */
-
-
+        User user = (User) session.getAttribute("user");
 
         double balance = 500;
         balance -= kurv.getTotalSum();
+
+        OrdreMapper.insertOrder(user);
+
+        kurv.emptyKurv();
         System.out.println(balance);
         return "kurv";
     }

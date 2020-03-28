@@ -1,6 +1,9 @@
 package FunctionLayer;
 
 public class Customer {
+    /**
+     * @author Mia
+     */
 
     private int id;
     private String name;

@@ -3,7 +3,9 @@ package FunctionLayer;
 import java.util.Date;
 
 public class IndividualOrder {
-
+    /**
+     * @author Mia
+     */
     private int orderID;
     private Date date;
     private String email;

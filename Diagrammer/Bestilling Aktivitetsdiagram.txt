@@ -1,0 +1,28 @@
+@startuml
+
+title Bestilling Aktivitetsdiagram
+
+
+start
+
+:Tryk "Bestil cupcakes"; 
+note right: Brugeren er logget ind
+
+:Vælg bund; 
+
+:Vælg topping; 
+
+:Vælg antal; 
+
+:Tilføj til kurv;
+if (Er alle valgt?) then (Ja)
+  :Cupcakes tilføjet!;
+else (Nej)
+  stop
+endif
+
+:Gå til kurv;
+
+stop
+
+@enduml

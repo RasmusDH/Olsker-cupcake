@@ -1,0 +1,25 @@
+@startuml
+
+title Login Aktivitetsdiagram
+
+
+start
+
+:Tryk "Login"; 
+
+:Skriv email; 
+:Skriv password; 
+
+if (Stemmer email og password overens?) then (Ja)
+  if (Er du kunde?) then (Ja)
+     :Customerpage;
+     stop
+  else (Nej)
+     :Employeepage;
+     stop
+  endif     
+else (Nej)
+  stop
+endif
+
+@enduml

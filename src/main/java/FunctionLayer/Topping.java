@@ -2,6 +2,10 @@ package FunctionLayer;
 
 public class Topping {
 
+    /**
+     * @author Andreas
+     */
+
     private int id; // just used to demo retrieval of autogen keys in UserMapper
     private String name;
     private double toppingPrice;

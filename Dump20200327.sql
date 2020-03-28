@@ -79,7 +79,7 @@ DROP TABLE IF EXISTS `individualorders`;
 CREATE TABLE `individualorders` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `OrderID` int(11) NOT NULL DEFAULT '0',
-  `Date` date NOT NULL,
+  `Date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `Email` varchar(90) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `ToppingID` int(11) NOT NULL,
   `Topping` varchar(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
@@ -105,7 +105,7 @@ CREATE TABLE `individualorders` (
 
 LOCK TABLES `individualorders` WRITE;
 /*!40000 ALTER TABLE `individualorders` DISABLE KEYS */;
-INSERT INTO `individualorders` VALUES (1,2,'2020-03-20','ole.olesen@live.dk',1,'Chocolate',5,1,'Chocolate',5,2,20),(2,3,'2020-03-21','ole.olesen@live.dk',4,'Crispy',6,3,'Nutmeg',5,10,110),(3,1,'2020-03-19','lars.jysk@gmail.co',7,'Orange',8,5,'Almond',7,1,15),(4,4,'2020-03-21','andreas.noer@hotmail.dk',7,'Orange',8,1,'Chocolate',5,2,26);
+INSERT INTO `individualorders` VALUES (1,2,'2020-03-20 00:00:00','ole.olesen@live.dk',1,'Chocolate',5,1,'Chocolate',5,2,20),(2,3,'2020-03-21 00:00:00','ole.olesen@live.dk',4,'Crispy',6,3,'Nutmeg',5,10,110),(3,1,'2020-03-19 00:00:00','lars.jysk@gmail.co',7,'Orange',8,5,'Almond',7,1,15),(4,4,'2020-03-21 00:00:00','andreas.noer@hotmail.dk',7,'Orange',8,1,'Chocolate',5,2,26);
 /*!40000 ALTER TABLE `individualorders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -120,7 +120,7 @@ CREATE TABLE `orders` (
   `OrderID` int(11) NOT NULL DEFAULT '0',
   `Email` varchar(90) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `CustomerID` int(11) NOT NULL DEFAULT '0',
-  `Date` date NOT NULL,
+  `Date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`OrderID`),
   KEY `CustomerID` (`CustomerID`),
   CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`CustomerID`) REFERENCES `customers` (`CustomerID`)
@@ -133,7 +133,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,'ole.olesen@live.dk',9,'2020-03-21'),(2,'lars.jysk@gmail.co',5,'2020-03-19');
+INSERT INTO `orders` VALUES (1,'ole.olesen@live.dk',9,'2020-03-21 00:00:00'),(2,'lars.jysk@gmail.co',5,'2020-03-19 00:00:00');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,4 +199,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-26 17:09:52
+-- Dump completed on 2020-03-27 11:18:51

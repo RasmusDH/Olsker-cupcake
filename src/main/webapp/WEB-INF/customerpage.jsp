@@ -1,7 +1,10 @@
-<%-- 
-    Document   : customerpage
-    Created on : Aug 22, 2017, 2:33:37 PM
-    Author     : kasper
+
+<%--
+  Created by IntelliJ IDEA.
+  Document   : customerpage
+  User: miade
+  Date: 16-03-2020
+  Time: 09:28
 --%>
 
 <%@include file="../includes/indexHeader.inc"%>

@@ -23,17 +23,6 @@ public class Order {
 
     }
 
-    public Order(Date date, int customerID) {
-        this.date = date;
-        this.customerID = customerID;
-    }
-
-    public Order(String email, int customerID, Date date) {
-        this.email = email;
-        this.customerID = customerID;
-        this.date = date;
-    }
-
     public String getName() {
         return name;
     }

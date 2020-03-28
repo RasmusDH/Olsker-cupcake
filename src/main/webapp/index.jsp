@@ -7,6 +7,9 @@
         <img src="Images/LogoUdenBaggrund.png" width="90" height="auto">
           Olsker Cupcakes
     </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse mr-4" id="navbarNavDropdown" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
@@ -130,7 +133,7 @@
 <!-- Footer -->
 <footer class="py-5 bg-dark mt-5">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Gruppe4</p>
+        <p class="m-0 text-center text-white">Copyright &copy; Olskers Cupcakes</p>
     </div>
     <!-- /.container -->
 </footer>

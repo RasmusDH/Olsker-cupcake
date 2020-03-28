@@ -12,6 +12,10 @@ public class Kurv {
         this.quantity = 0;
     }
 
+    /**
+    * @author Rasmus
+    * @param cake er den cupcake der er blevet tilføjet til kurven
+    */
     public void addCupcake(Cupcake cake) {
         cupcakeList.add(cake);
         quantity++;
@@ -22,6 +26,10 @@ public class Kurv {
         this.quantity = 0;
     }
 
+    /**
+     * @author Rasmus
+     * @return metoden returnerer den totale pris for hele ordren, alle cupcakesne
+     */
     public double getTotalSum() {
         double sum = 0.0;
         for (Cupcake cupcake : cupcakeList) {
